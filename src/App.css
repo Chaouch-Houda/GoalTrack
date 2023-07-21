@@ -1,38 +1,57 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Sorts+Mill+Goudy&display=swap');
+
+:root{
+    --green : #398D03;
+    --bg-color : #102339;
+    --color1: rgba(230, 255, 214, 0.11);
+    --radial-color : radial-gradient(ellipse at center, rgb(57, 141, 3)5% ,rgb(16, 35, 57)65%);
+    --linear-color : linear-gradient(135deg, #FFFFFF,var(--green));
+    --ff-one : 'Manrope', sans-serif ;
+    --ff-two : 'Sorts Mill Goudy', serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.App{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    flex-direction: column;
+    
+    background-color: var(--bg-color);
+    overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.font1{
+    font-family:var(--ff-one);
+    font-weight:20rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.stroke-text{
+    color: transparent;
+    font-family:var(--ff-two);
+    font-size: 2rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--ff-body) !important;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 24px 24px 0 24px !important;
+    border: 1px solid transparent;
 }

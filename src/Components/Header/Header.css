@@ -1,0 +1,103 @@
+.navbar{
+    /* width: fill;
+    height: 80px;
+    display: flex; */
+    /* grid-template-columns: 25% 50% 25%; */
+    /* justify-content: space-between; */
+    /* align-items: center;*/
+    width: 100%;
+    padding: 0 1rem !important;
+    background-color: hsla(0, 0%, 11%, 0.2) !important;
+    backdrop-filter: blur(10px) !important; 
+    
+}
+
+.logo{
+    height: 62px;
+}
+
+/* ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width:40%;
+    max-width: 350px;
+} */
+
+/* ul>li{
+    text-align: center;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 10px;
+}
+
+ul>li:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+ul>li>a{
+    text-decoration: none;
+    color: white;
+} */
+
+.nav-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-buttons Button{
+    width: 102px;
+    border-color: var(--green) !important;
+    transition: 0.3s ease-in-out;
+    
+}
+
+.login{
+    color: var(--green) !important;
+    background-color: transparent !important;
+}
+.login:hover{
+    animation: spring 0.6s;
+    color: white !important;
+    background-color: var(--green) !important;
+}
+.signUp{
+    background-color: rgba(57,141,3,0.8) !important;
+}
+.signUp:hover{
+    background-color: var(--green) !important;
+    border-color: white !important;
+}
+
+.menu{
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.navbar-sm-bg{
+    background-color: #102339ce !important;
+    z-index: 100;
+}
+.navbar-sm-bg .login , .navbar-sm-bg .signUp{
+    border-radius: 24px !important;
+    width: 300px ;
+}
+
+.navbar-sm-bg .nav-buttons{
+    width: 100%;
+}
+.navbar-sm-bg .aHovered{
+    padding-left:0 !important;
+    transition: 0.7 ease-in-out ;
+}
+
+.navbar-sm-bg .aHovered:hover{
+    padding-left: 2rem !important;
+    background-color: rgba(255, 255, 255, 0.2);
+    
+}
