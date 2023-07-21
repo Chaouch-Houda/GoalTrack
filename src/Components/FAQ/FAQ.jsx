@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./FAQ.css"
-import {CaretDown,CaretUp} from "@phosphor-icons/react"
+import {CaretDown,CaretUp} from "phosphor-react"
 import {faqData} from "../../ComponentsData/faqData"
 const FAQ = ()=> {
   const [isAnswerVisible, setIsAnswerVisible] = useState(null);

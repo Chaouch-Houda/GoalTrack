@@ -4,7 +4,7 @@
     --green : #398D03;
     --bg-color : #102339;
     --color1: rgba(230, 255, 214, 0.11);
-    --radial-color : radial-gradient(ellipse at center, rgb(57, 141, 3)5% ,rgb(16, 35, 57)65%);
+    --radial-color : radial-gradient(ellipse at center, #398D03 5% ,rgb(16, 35, 57) 55%);
     --linear-color : linear-gradient(135deg, #FFFFFF,var(--green));
     --ff-one : 'Manrope', sans-serif ;
     --ff-two : 'Sorts Mill Goudy', serif;
@@ -22,7 +22,6 @@
     align-items: center;
     height: fit-content;
     flex-direction: column;
-    
     background-color: var(--bg-color);
     overflow: hidden;
 }
