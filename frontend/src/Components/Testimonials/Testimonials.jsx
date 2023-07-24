@@ -3,7 +3,7 @@ import "./Testimonials.css";
 import {testimonialsData} from "../../ComponentsData/testimonialsData.js";
 import arrow_left from "../../Images/arrow-left.svg";
 import arrow_right from "../../Images/arrow-right.svg"
-
+import{Row,Col, Button} from "react-bootstrap"
 const Testimonials = () => {
   
   // auto Scroll
@@ -48,31 +48,42 @@ const Testimonials = () => {
   
   return (
     <section className='testimonials'>
-      <div className="left-side-t">
-        <div className='font1'>
-          <span>what they</span>
-          <span>say about us</span>
-        </div>
-        <span>{currentTestimonial.review}</span>
-        <span>{currentTestimonial.name}</span>
-        <div className="arrows-t">
-          <div></div>
-          <div>
-            <button   onClick={handlePrev}><img src={arrow_left} alt="" /></button>
-            <button onClick={handleNext}><img src={arrow_right} alt="" /></button>
-          </div>
+      <Row>
+          <Col xs={12} sm={12} md={6} className="left-side-t">
+            <div className='font1'>
+              <span>what they</span>
+              <span>say about us</span>
+            </div>
+            <span>{currentTestimonial.review}</span>
+            <span>{currentTestimonial.name}</span>
+          </Col>
+
+          <Col xs={12} sm={12} md={6} className="right-side-t">
+            <div className='rectangles-container-t'>
+            <div></div>
+            <div></div>      
+            <div></div> 
+            <img src={currentTestimonial.image} alt="testimonial_image" /> 
+            </div>  
+          </Col>
+      </Row>
+
+      <div className="arrows-t">
+        <div></div>
+        <div>
+          <button   onClick={handlePrev}><img src={arrow_left} alt="" /></button>
+          <button onClick={handleNext}><img src={arrow_right} alt="" /></button>
         </div>
       </div>
 
-      <div className="right-side-t">
-        <div className='rectangles-container-t'>
-        <div></div>
-        <div></div>      
-        <div></div> 
-        <img src={currentTestimonial.image} alt="testimonial_image" /> 
-        </div>
-            
+      <div  className="ready-t">
+      <span style={{color:'white'}}>Are you ready to take part in an amazing experience?</span>
+      <button>
+        <span>SIGN UP</span>
+        <img src={arrow_right} alt="" />
+      </button>
       </div>
+
     </section>
   )
 }

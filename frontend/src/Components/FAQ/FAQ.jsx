@@ -10,7 +10,7 @@ const FAQ = ()=> {
   };
 
   return (
-    <div className='faq'>
+    <section className='faq'>
         <h1 className='font1'>FAQ</h1>
         <div className="faq-items">
           {faqData.map((item,index)=>(
@@ -65,7 +65,7 @@ const FAQ = ()=> {
           )}
         </div> */}
 
-    </div>
+    </section>
   )
 }
 

@@ -83,7 +83,7 @@
 }
 
 #motivate{
-    font-size: 2rem;
+    font-size: clamp(1rem,2rem,2rem);
     letter-spacing: 1.5px;
 }
 #motivate>span:nth-of-type(1) , #motivate>span:nth-of-type(3){
@@ -104,7 +104,8 @@
     flex-direction: column;
     align-items: center;
     padding: 20px 30px;
-    background-color: rgba(0,0,0,0.4);
+    /* background-color: rgba(0,0,0,0.4); */
+    /* background-color: #233144; */
     color: white;
     font-family: var(--ff-one);
     font-size: 1.2rem;
@@ -153,7 +154,7 @@
 }
 
 
-@media (768px < width <= 992px){
+@media (768px < width <= 1100px){
     .about{
         padding: 7rem 0 0 0;
     }

@@ -61,7 +61,6 @@ ul>li>a{
     background-color: transparent !important;
 }
 .login:hover{
-    animation: spring 0.6s;
     color: white !important;
     background-color: var(--green) !important;
 }
@@ -93,7 +92,7 @@ ul>li>a{
 }
 .navbar-sm-bg .aHovered{
     padding-left:0 !important;
-    transition: 0.7 ease-in-out ;
+    transition: 0.5s ease-in-out;
 }
 
 .navbar-sm-bg .aHovered:hover{

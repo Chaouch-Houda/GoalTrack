@@ -1,20 +1,17 @@
 .testimonials{
-    display: flex;
     width: 100%;
 }
 
 .left-side-t{
     position: relative;
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding:9rem 5rem 9rem 10vw;
-    /* padding: 0 2rem ; */
+    padding: 5rem 10vw 0rem 10vw !important;
     /* background-color: blue; */
 }
 
-.left-side-t>div{
+.left-side-t>div:first-child{
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -36,19 +33,28 @@
     color: var(--green);
 }
 
+.arrows-t{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    /* background-color: red; */
+}
+
 .arrows-t>div:nth-of-type(1){
-    position: absolute;
     width: 248px;
     height: 1px;
     background-color: rgba(163,163,163,0.5);
-    bottom: 90px;
+     
 }
 
 .arrows-t>div:nth-of-type(2){
     width: 100%;
     display: flex;
     gap: 1rem;
-    justify-content: end;
+    justify-content: center;
 }
 
 .arrows-t>div>button{
@@ -109,14 +115,34 @@
     left: 20px;
 }
 
-@media ( width <768px ){
-    .testimonials{
-        flex-direction: column-reverse !important;
-    }
-    .left-side-t{
-        padding-top: 0;
-    }
-    .arrows-t>div:nth-of-type(2){
-        justify-content: center;
+.ready-t{
+    width: 100%;
+    padding: 5rem 10vw;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    gap:1rem ;
+}
+
+.ready-t>button{
+    width: 8rem;
+    border-radius: 24px !important;
+    gap:0.6rem;
+    font-family: var(--ff-one) !important;
+    background:var(--linear-color2);
+    border: none ;
+    opacity: 0.7;
+    transition: 0.3s ease-in-out;
+}
+.ready-t>button:hover{
+    gap: 1rem;
+    opacity: 1;
+}
+
+@media(width>= 650px){
+    .ready-t{
+        flex-direction: row;
+        justify-content: start;
     }
 }

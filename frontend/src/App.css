@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Sorts+Mill+Goudy&display=swap');
 
 :root{
-    --green : #398D03;
-    --bg-color : #102339;
+    --green : #398d03;
+    --bg-color : rgb(17, 35, 57);
     --color1: rgba(230, 255, 214, 0.11);
     --radial-color : radial-gradient(ellipse at center, #398D03 5% ,rgb(16, 35, 57) 55%);
     --linear-color : linear-gradient(135deg, #FFFFFF,var(--green));
+    --linear-color2 : linear-gradient(135deg,var(--green),#232323);
     --ff-one : 'Manrope', sans-serif ;
     --ff-two : 'Sorts Mill Goudy', serif;
 }
