@@ -27,7 +27,7 @@ const Header = () => {
           <Nav className="mx-auto font1 ">
             <Nav.Link href="#Home" className="aHovered">Home</Nav.Link>
             <Nav.Link href="#About" className="aHovered">About</Nav.Link>
-            <Nav.Link href="#Services" className="aHovered">Plans</Nav.Link>
+            <Nav.Link href="#Plans" className="aHovered">Plans</Nav.Link>
             <Nav.Link href="#Contact" className="aHovered">Contact</Nav.Link>
           </Nav>
           <Nav className="nav-buttons">

@@ -5,8 +5,8 @@ import Plan from './Components/Plans/Plan';
 import Testimonials from './Components/Testimonials/Testimonials';
 import About from './Components/About/About';
 import Contact from './Components/Contact/Contact';
-import SideBar from './Components/SideBar/SideBar';
 import Footer from './Components/Footer/Footer';
+import React from 'react';
 function App() {
   return (
     <div className="App">

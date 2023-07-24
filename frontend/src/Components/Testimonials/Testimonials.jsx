@@ -3,7 +3,7 @@ import "./Testimonials.css";
 import {testimonialsData} from "../../ComponentsData/testimonialsData.js";
 import arrow_left from "../../Images/arrow-left.svg";
 import arrow_right from "../../Images/arrow-right.svg"
-import{Row,Col, Button} from "react-bootstrap"
+import{Row,Col} from "react-bootstrap"
 const Testimonials = () => {
   
   // auto Scroll
@@ -47,7 +47,7 @@ const Testimonials = () => {
   };
   
   return (
-    <section className='testimonials'>
+    <section className='testimonials' id="Testimonials">
       <Row>
           <Col xs={12} sm={12} md={6} className="left-side-t">
             <div className='font1'>

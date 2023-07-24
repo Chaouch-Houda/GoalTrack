@@ -16,7 +16,7 @@ const About = () => {
     // const initial={};
     // const animate={x:0,opacity:1,scale:1};
   return (
-    <section className='about'>
+    <section className='about' id="About" >
         <Container className=' w-100 w-0' id='About'>
             <Row className="part-one-w">
             <Col xs={12} sm={12} lg={6} className="left-side-w">
@@ -31,14 +31,15 @@ const About = () => {
             </Col>
             <Col xs={12} sm={12} lg={6} className="right-side-w">
                 <h1>Why GoalTrack Is The Best Choice</h1>
-                    {aboutData.map((item,index)=>(
-                        <motion.div className="item" initial={{ x:-50 ,opacity: 0,scale:0.5 }} transition={{delay:0.2}} animate={{x:0,opacity:1,scale:1}}>
+                    {aboutData.map((item,i)=>(
+                        <motion.div className="item" key={i} initial={{ x:-50 ,opacity: 0,scale:0.5 }} transition={{delay:0.2}} animate={{x:0,opacity:1,scale:1}}>
                             <img src={item.src} alt={item.alt} />
                             <p>{item.text}</p>
                         </motion.div>
                     ))}
             </Col>
             </Row>
+
             <div className="part-two-w">
                 <div className="font1" id='motivate'>
                 <span>READY TO START </span>
@@ -48,7 +49,7 @@ const About = () => {
                 <Row className="boxs">
                     
                     {aboutData2.map((item,i)=>(
-                        <Col xs={12} sm={12} md={4} className='boxs-item'>
+                        <Col xs={12} sm={12} md={4} key={i} className='boxs-item'>
                         <img src={item.icon} alt="" />
                         <span>{item.percent}</span>
                         <span>{item.title}</span>

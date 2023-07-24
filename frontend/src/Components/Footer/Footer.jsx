@@ -3,7 +3,7 @@ import {Row,Col,Container,Form} from "react-bootstrap";
 import "./Footer.css"
 export default function Footer() {
   return (
-    <section className='footer text-center'bgColor='dark'>
+    <section className='footer text-center'>
       <Container className='p-4' style={{fontSize:"13px"}}>
         {/* <Row className='align-items-center mb-3'>
         <Col className='mb-4' xs={12} md={4}>
@@ -19,7 +19,7 @@ export default function Footer() {
                 </Col>
                 <Col md={10} xs={9} className='d-flex justify-content-center'>
                   <Form.Label style={{fontSize:"15px",fontWeight:"600"}}>Email address</Form.Label>
-                  <Form.Control contrast type='email' label='Email address' className='m-4 mt-0' style={{maxWidth:"350px"}}/>
+                  <Form.Control contrast="true" type='email' label='Email address' className='m-4 mt-0' style={{maxWidth:"350px"}}/>
                 </Col>
                 <Col md={2} xs={3}>
                   <button className="form-btn" type='submit'>Subscribe</button>
@@ -32,16 +32,16 @@ export default function Footer() {
 
             <ul className='list-unstyled mb-0 '>
               <li>
-                <a href='#!' className='text-white'>Home</a>
+                <a href='#Home'>Home</a>
               </li>
               <li>
-                <a href='#!' className='text-white'>About Us</a>
+                <a href='#About'>About Us</a>
               </li>
               <li>
-                <a href='#!' className='text-white'>Testimonials</a>
+                <a href='#Testimonials'>Testimonials</a>
               </li>
               <li>
-                <a href='#!' className='text-white'> Contact Us</a>
+                <a href='#Contact'> Contact Us</a>
               </li>
             </ul>
           </Col>
@@ -51,17 +51,17 @@ export default function Footer() {
 
             <ul className='list-unstyled mb-0'>
               <li>
-                <a href='#!' className='text-white'>Plans</a>
+                <a href='#Plans'>Plans</a>
               </li>
               <li>
-                <a href='#!' className='text-white'>FAQ</a>
+                <a href='#FAQ'>FAQ</a>
               </li>
               <li>
-                <a href='#!' className='text-white'>Featured Matches</a>
+                <a href='#!' >Featured Matches</a>
               </li>
               
               <li>
-                <a href='#!' className='text-white'> AI Algorithms</a>
+                <a href='#!'> AI Algorithms</a>
               </li>
             </ul>
           </Col>
@@ -70,21 +70,20 @@ export default function Footer() {
 
             <ul className='list-unstyled mb-0'>
               <li>
-                <a href='#!' className='text-white'>Related Websites</a>
+                <a href='#!' >Related Websites</a>
               </li>
               <li>
-                <a href='#!' className='text-white'>Updates</a>
+                <a href='#!'>Updates</a>
               </li>
               <li>
-                <a href='#!' className='text-white'>Community</a>
+                <a href='#!'>Community</a>
               </li>
               
               <li>
-                <a href='#!' className='text-white'> help & Support</a>
+                <a href='#!'> help & Support</a>
               </li>
             </ul>
           </Col>
-         
         </Row>
       </Container>
 

@@ -11,11 +11,11 @@ import credit_card from "../../Images/credit-card-duotone.svg";
 import toggle_left from "../../Images/toggle-left-duotone.svg"
 import { motion } from 'framer-motion';
 import Zoom from 'react-reveal/Zoom';
-import {Circle,Medal} from "phosphor-react";
+import {Circle} from "phosphor-react";
 
 const  Plan = () =>{
   return( 
-    <section className="plans" id='Plan'>
+    <section className="plans" id='Plans'>
 
         <motion.div initial={{ y: 100 ,opacity: 0,scale:0.5 }} animate={{ y: 0 ,opacity:1,scale:1}} transition={{ duration: 0.8, ease: 'easeInOut',delay:0.1 }}>
             <h1 className='font1'>ready to start ?</h1>

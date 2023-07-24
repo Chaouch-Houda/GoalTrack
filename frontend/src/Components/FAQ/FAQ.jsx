@@ -10,7 +10,7 @@ const FAQ = ()=> {
   };
 
   return (
-    <section className='faq'>
+    <section className='faq' id='FAQ'>
         <h1 className='font1'>FAQ</h1>
         <div className="faq-items">
           {faqData.map((item,index)=>(

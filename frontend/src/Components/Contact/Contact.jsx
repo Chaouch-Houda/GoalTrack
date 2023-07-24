@@ -4,7 +4,7 @@ import "./Contact.css";
 import {FacebookLogo,InstagramLogo,LinkedinLogo,EnvelopeSimple} from "phosphor-react";
 const Contact = () => {
   return(
-    <section id="contact-us">
+    <section className="contact-us" id='Contact'>
       <Container className='contact-container'>
         <Row className='contact-row'>
           <Col xs={12} sm={12} md={11}  className='form-c'>
