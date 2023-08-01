@@ -6,11 +6,11 @@ const Contact = () => {
   return(
     <section className="contact-us" id='Contact'>
       <Container className='contact-container'>
-        <Row className='contact-row'>
-          <Col xs={12} sm={12} md={11}  className='form-c'>
+        <Row>
+          <Col xs={12} sm={12} md={11}  className='form-col'>
             <div>
               <h1>Contact Us</h1>
-              <Form>
+              <Form className='form-contact'>
                 <Form.Control type="text" placeholder="Enter your name" className='input-c'/>
                 <Form.Control type="email" placeholder="Enter your email" className='input-c' />
                 <Form.Control as="textarea" rows={5} placeholder="Enter your message ..." className='input-c' />

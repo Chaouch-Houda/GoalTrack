@@ -4,29 +4,29 @@
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
     background-color: rgba(9, 12, 9, 0.1);
 }
-form{
+.form-f{
     max-width: 100% !important;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
-.form-row{
+.form-f-row{
     width: 100% !important;
     max-width: 700px;
-    justify-content: center;
     margin-bottom: 2rem;
 }
 
-.form-btn{
+.form-f-btn{
     background-color: var(--green);
     font-weight: 600;
     font-size: 15px;
 }
-
-.colF>ul>li>a{
+.nav-list>a{
 text-decoration: none;
 color: rgba(255, 255, 255, 0.625) !important;
 }
 
-.colF>ul>li>a:hover{
+.nav-list>a:hover{
     color: var(--green) !important;
 }
 

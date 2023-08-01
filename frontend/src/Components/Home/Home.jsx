@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./Home.css";
 import Home_background from "../../Videos/Home_background.mp4"
 import device_mobile from "../../Images/device-mobile.svg"

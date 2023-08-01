@@ -1,6 +1,7 @@
 import React from 'react';
-import {Row,Col,Container,Form} from "react-bootstrap";
+import {Row,Col,Container,Form, Nav} from "react-bootstrap";
 import "./Footer.css"
+import { Link } from 'react-router-dom';
 export default function Footer() {
   return (
     <section className='footer text-center'>
@@ -12,77 +13,54 @@ export default function Footer() {
         </Row> */}
         <Row>
         <Col xs={12} md={12}>
-            <Form action='' className='m-0'>
-              <Row className='form-row'>
+            <Form action='' className='form-f m-0'>
+              <Row className='form-f-row'>
                 <Col className='mb-3 fs-5' md={12} xs={12} >
                   <strong>Sign up for our newsletter</strong>
                 </Col>
                 <Col md={10} xs={9} className='d-flex justify-content-center'>
                   <Form.Label style={{fontSize:"15px",fontWeight:"600"}}>Email address</Form.Label>
-                  <Form.Control contrast="true" type='email' label='Email address' className='m-4 mt-0' style={{maxWidth:"350px"}}/>
+                  <Form.Control contrast="true" type='email' label='Email address' placeholder='name@gmail.com' className='mx-1 m-4 mt-0' style={{maxWidth:"350px"}}/>
                 </Col>
                 <Col md={2} xs={3}>
-                  <button className="form-btn" type='submit'>Subscribe</button>
+                  <button className="form-f-btn" type='submit'>Subscribe</button>
                 </Col>
               </Row>
             </Form>
         </Col>
-          <Col md={4} xs={4} className='mb-4 mb-md-0 flex-column colF'>
-            <h6 className='text-uppercase'> Information and Presentation</h6>
+        </Row>
+        <Row className='justify-content-evenly'> 
+          <Col md={2} xs={12} className='colF mb-4 mb-md-0  text-start '>
+            <h6 className='text-capitalize'> Information and Presentation</h6>
 
-            <ul className='list-unstyled mb-0 '>
-              <li>
-                <a href='#Home'>Home</a>
-              </li>
-              <li>
-                <a href='#About'>About Us</a>
-              </li>
-              <li>
-                <a href='#Testimonials'>Testimonials</a>
-              </li>
-              <li>
-                <a href='#Contact'> Contact Us</a>
-              </li>
-            </ul>
+            <Nav className='nav-list list-unstyled mb-0 d-flex flex-column'>
+              <Nav.Link href='#Home'>Home</Nav.Link>
+              <Nav.Link href='#About'>About Us</Nav.Link>
+              <Nav.Link href='#Testimonials'>Testimonials</Nav.Link>
+              <Nav.Link href='#Contact'>Contact Us</Nav.Link>
+            </Nav>
           </Col>
 
-          <Col md={4} xs={4} className='mb-4 mb-md-0 flex-column colF'>
-            <h6  className='text-uppercase'>Features and Plans</h6>
+          <Col md={2} xs={12} className='colF mb-4 mb-md-0 text-start '>
+            <h6  className='text-capitalize'>Features and Plans</h6>
 
-            <ul className='list-unstyled mb-0'>
-              <li>
-                <a href='#Plans'>Plans</a>
-              </li>
-              <li>
-                <a href='#FAQ'>FAQ</a>
-              </li>
-              <li>
-                <a href='#!' >Featured Matches</a>
-              </li>
-              
-              <li>
-                <a href='#!'> AI Algorithms</a>
-              </li>
-            </ul>
+            <Nav className=' nav-list list-unstyled mb-0 d-flex flex-column'>
+              <Nav.Link href='#Plans'>Plans</Nav.Link>
+              <Nav.Link href='#FAQ'>FAQ</Nav.Link>
+              <Nav.Link href='#'>Featured Matches</Nav.Link>
+              <Nav.Link href='#'>AI Algorithms</Nav.Link>
+            </Nav>
           </Col>
-          <Col  md={4} xs={4} className='mb-4 mb-md-0 flex-column colF'>
-            <h6  className='text-uppercase'>Resources and Support</h6>
 
-            <ul className='list-unstyled mb-0'>
-              <li>
-                <a href='#!' >Related Websites</a>
-              </li>
-              <li>
-                <a href='#!'>Updates</a>
-              </li>
-              <li>
-                <a href='#!'>Community</a>
-              </li>
-              
-              <li>
-                <a href='#!'> help & Support</a>
-              </li>
-            </ul>
+          <Col  md={2} xs={12} className='colF mb-md-0 text-start '>
+            <h6  className='text-capitalize'>Resources and Support</h6>
+
+            <Nav className='nav-list list-unstyled mb-0 d-flex flex-column'>
+              <Nav.Link href='#'>Related Websites</Nav.Link>
+              <Nav.Link href='#login'>Updates</Nav.Link>
+              <Nav.Link href='#'>Community</Nav.Link>
+              <Nav.Link href='#'>help & Support</Nav.Link>
+            </Nav>
           </Col>
         </Row>
       </Container>

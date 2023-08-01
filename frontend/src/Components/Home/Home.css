@@ -1,6 +1,7 @@
 .home{
     position: relative;
     min-height: 100vh;
+    height: fit-content;
     width: 100%;
     overflow: hidden;
 }
@@ -28,7 +29,7 @@ video{
 
 .content{
         position: absolute;
-        margin-top: calc(10vh);
+        margin-top: min(10vh,100px);
         width: 100%;
         display: flex;
         flex-direction: column;

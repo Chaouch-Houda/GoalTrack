@@ -1,9 +1,11 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState, useEffect, useContext } from 'react';
 import "./Testimonials.css";
 import {testimonialsData} from "../../ComponentsData/testimonialsData.js";
 import arrow_left from "../../Images/arrow-left.svg";
 import arrow_right from "../../Images/arrow-right.svg"
 import{Row,Col} from "react-bootstrap"
+import { SignupContext } from '../Signup/SignupContext';
+import Signup from '../Signup/Signup';
 const Testimonials = () => {
   
   // auto Scroll
@@ -26,7 +28,7 @@ const Testimonials = () => {
     return () => {
       stopAutoScroll();
     };
-  }, []);
+  },);
 
   //Manual Scroll
   const [currentIndex,setCurrentIndex] = useState(0);
@@ -45,7 +47,12 @@ const Testimonials = () => {
     prevIndex === 0 ? testimonialsData.length-1 : prevIndex+1
     );
   };
-  
+
+   // to open the signup form 
+   const { showSignup, openSignup } = useContext(SignupContext);
+
+
+
   return (
     <section className='testimonials' id="Testimonials">
       <Row>
@@ -78,12 +85,12 @@ const Testimonials = () => {
 
       <div  className="ready-t">
       <span style={{color:'white'}}>Are you ready to take part in an amazing experience?</span>
-      <button>
+      <button onClick={openSignup}>
         <span>SIGN UP</span>
         <img src={arrow_right} alt="" />
       </button>
       </div>
-
+      {showSignup && <Signup/>}
     </section>
   )
 }
