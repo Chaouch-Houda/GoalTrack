@@ -9,7 +9,6 @@
     padding: 0 1rem !important;
     background-color: hsla(0, 0%, 11%, 0.2) !important;
     backdrop-filter: blur(10px) !important; 
-    
 }
 
 .logo{
@@ -49,27 +48,23 @@ ul>li>a{
     align-items: center;
 }
 
-.nav-buttons Button{
+/* .nav-buttons Button{
     width: 102px;
     border-color: var(--green) !important;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     
-}
+} */
 
 .login{
-    color: var(--green) !important;
-    background-color: transparent !important;
+    /* color: var(--green) !important;
+    background-color: transparent !important; */
 }
 .login:hover{
-    color: white !important;
-    background-color: var(--green) !important;
-}
-.signUp{
-    background-color: rgba(57,141,3,0.8) !important;
-}
-.signUp:hover{
-    background-color: var(--green) !important;
-    border-color: white !important;
+    /* color: white !important;
+    background-color: var(--green) !important; */
+    /* background-color: transparent !important;
+    box-shadow: 0 0 5px var(--green) !important;
+    border-color:var(--green) !important; */
 }
 
 .menu{
@@ -83,7 +78,7 @@ ul>li>a{
     z-index: 100;
 }
 .navbar-sm-bg .login , .navbar-sm-bg .signUp{
-    border-radius: 24px !important;
+    border-radius: 5px !important;
     width: 300px ;
 }
 

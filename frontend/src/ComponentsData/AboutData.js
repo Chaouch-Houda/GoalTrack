@@ -1,7 +1,7 @@
-import check_circle from "../Images/check-circle.svg";
-import chart_line_up from "../Images/chart-line-up.svg";
-import balls from "../Images/dribbble-logo-light.svg";
-import video from "../Images/video-light.svg";
+import check_circle from "../assets/images/check-circle.svg";
+import chart_line_up from "../assets/images/chart-line-up.svg";
+import balls from "../assets/images/dribbble-logo-light.svg";
+import video from "../assets/images/video-light.svg";
 
 export const aboutData =[
     {

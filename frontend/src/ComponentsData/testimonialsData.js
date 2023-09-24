@@ -1,8 +1,8 @@
-import image1 from "../Images/user1.jpg";
-import image2 from "../Images/user2.png";
-import image3 from "../Images/user3.jpg";
-import image4 from "../Images/user4.jpg";
-import image5 from "../Images/user5.jpg";
+import image1 from "../assets/images/user1.jpg";
+import image2 from "../assets/images/user2.png";
+import image3 from "../assets/images/user3.jpg";
+import image4 from "../assets/images/user4.jpg";
+import image5 from "../assets/images/user5.jpg";
 
 
 export const testimonialsData = [

@@ -1,0 +1,97 @@
+.Sidebar{
+    background-color: #27374B !important;
+    /* background-color: #2e4053; */
+    position: fixed;
+    /* background-color: hsla(0, 0%, 11%, 0.2) !important; */
+    backdrop-filter: blur(10px) !important; 
+    transition:all 0.5s ease-in-out;
+    box-sizing: border-box;
+    z-index: 2;
+    box-shadow: 0px 0px 1px var(--bg-color);
+    /* overflow-y:auto; if we don't have enaf height it will be scroll */
+    
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 1.5rem 0;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem;
+
+}
+
+.navlink{
+    display: flex;
+    align-items: center;
+    text-decoration: none ;
+    height: 46px;
+    color: white;
+    
+}
+.navlink:hover{
+    background-color: rgba(255, 255, 255, 0.456);
+}
+
+.navlink>h2{
+    font-size: 1.1rem !important;
+    white-space:pre; /*pas de retour à la ligne */
+    letter-spacing: 1px;
+    transition: all 0.5s ease-in-out;
+    margin: 0;
+}
+.item-hidden{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(40px) ;
+    overflow: hidden;
+}
+
+.h2-hovered{
+    position: absolute;
+    left: 140px;
+    background-color: rgba(65, 65, 65, 0.638);
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px lightgray;
+    /* padding: 0; */
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+.menu-item:hover .h2-hovered{
+    left: 70px;
+    padding: 5px 10px;
+    /* width: fit-content; */
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-item:hover .icon-bg{
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 24px 24px 0px 24px;
+}
+
+.actif div:first-of-type{
+    color:var(--green) ;
+}
+
+.actif2{
+    background-color: var(--green);
+
+}
+
+.submenu{
+    position: absolute;
+    margin-left: 4rem;
+    width: 12rem;
+    background-color: var(--bg-color);
+    /* background-color: hsla(0, 0%, 11%, 0.2) !important; */
+    border-radius: 10px !important;
+    overflow: hidden;
+    /* transition: all 0.5s ease-in-out; */
+    /* background-color: rgba(0,0,0,0.2); */
+}
+

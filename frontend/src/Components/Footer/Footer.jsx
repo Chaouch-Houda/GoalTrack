@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row,Col,Container,Form, Nav} from "react-bootstrap";
+import {Row,Col,Container,Form, Nav, Button} from "react-bootstrap";
 import "./Footer.css"
 import { Link } from 'react-router-dom';
 export default function Footer() {
@@ -23,7 +23,7 @@ export default function Footer() {
                   <Form.Control contrast="true" type='email' label='Email address' placeholder='name@gmail.com' className='mx-1 m-4 mt-0' style={{maxWidth:"350px"}}/>
                 </Col>
                 <Col md={2} xs={3}>
-                  <button className="form-f-btn" type='submit'>Subscribe</button>
+                  <Button className="green-btn " type='submit'>Subscribe</Button>
                 </Col>
               </Row>
             </Form>

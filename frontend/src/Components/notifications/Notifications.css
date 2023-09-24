@@ -1,0 +1,40 @@
+.notifications-list {
+  position: fixed;
+  top: 78px;
+  z-index: 10;
+  width: min(100%,400px);
+  height: 500px;
+  background-color: #27374B ;
+  backdrop-filter: blur(10px);
+  /* padding: 0 10px; */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  overflow-y: scroll;
+  font-family: var(--ff-one);
+}
+
+.notifications-list::-webkit-scrollbar {
+  width: 10px; /* Largeur de la barre de défilement */
+}
+
+.notifications-list::-webkit-scrollbar-thumb {
+  background-color: var(--green); /* Couleur du bouton */
+  border-radius: 5px;
+}
+
+.notifications-list::-webkit-scrollbar-track {
+  background-color: #ffffff22; /* Couleur de l'arrière-plan de la piste */
+  border-radius: 5px;
+}
+
+@media (width>576px){
+  .mClosed-notif{
+      margin-left: 5rem;
+  }
+  .mOpen-notif{
+      margin-left: calc(18rem + 10px);
+  }
+}

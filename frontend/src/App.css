@@ -2,7 +2,8 @@
 
 :root{
     --green : #398d03;
-    --bg-color : rgb(17, 35, 57);
+    /* --green : green; */
+    --bg-color : #112339;
     --color1: rgba(230, 255, 214, 0.11);
     --radial-color : radial-gradient(ellipse at center, #398D03 5% ,rgb(16, 35, 57) 55%);
     --linear-color : linear-gradient(135deg, #FFFFFF,var(--green));
@@ -15,14 +16,15 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family:var(--ff-one);
 }
 .App{
     width: 100%;
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    height: fit-content;
-    flex-direction: column;
+    height: 100%;
+    flex-direction: column; */
     background-color: var(--bg-color);
     overflow: hidden;
 }
@@ -49,9 +51,53 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: var(--ff-body) !important;
-    color: white;
     padding: 0.5rem;
-    border-radius: 24px 24px 0 24px !important;
+    /* font-family: var(--ff-body) !important; */
+    color: white;
     border: 1px solid transparent;
+    border-radius: 24px 24px 0 24px !important;
+    outline: none;
+}
+
+.green-btn{
+    width: 102px;
+    background-color: rgba(57,141,3,0.8) !important;
+    border: 0.3px solid var(--green) !important;
+    transition:all 0.3s ease-in-out;
+}
+
+.green-btn:hover{
+    background-color: var(--green) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0px 0px 4px white;
+}
+
+.transparent-g-btn{
+    width: 102px;
+    border: 0.3px solid var(--green) !important;
+    background-color: transparent !important;
+    color: var(--green) !important;
+}
+
+.transparent-g-btn:hover{
+    /* background-color: transparent !important; */
+    box-shadow: 0 0 5px var(--green) !important;
+    border-color:var(--green) !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+input[type="date"]:focus,
+textarea:focus,select:focus{
+    border-color: var(--green) !important;
+    box-shadow: 0 0 0 0.1rem rgba(57, 141, 3,1) !important ;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--green) !important;
+    border-color: var(--green) !important;
 }

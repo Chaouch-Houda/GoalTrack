@@ -1,0 +1,8 @@
+.all-notifications{
+    width: 90%;
+    max-width: 700px;
+    background-color: #27374B;
+    border-radius: 2px;
+    font-family: var(--ff-one);
+    /* padding: 15px 10px; */
+}

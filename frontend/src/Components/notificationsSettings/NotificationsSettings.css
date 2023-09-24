@@ -1,0 +1,63 @@
+.notificationsSettings{
+    padding: 2rem 3rem 5rem 3rem;
+    font-family: var(--ff-one);
+    /* background: #000; */
+}
+
+.table-notif{
+    max-width:53rem;
+     --bs-table-bg: transparent !important; /* sinon background-color :white par defaut */
+    /* background: #00000010 !important; */
+}
+
+.table-notif tr{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.table-notif h6{
+    color: var(--green) !important;
+    letter-spacing: 0.5px;
+}
+
+.table-notif td>div>span:first-of-type{
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    /* white-space: nowrap; */
+}
+
+.table-notif td>div>span:nth-of-type(2){
+    color:rgba(255, 255, 255, 0.4);
+    text-align: justify;
+    font-size: 12px;
+    display: block;
+    max-width: 500px;
+}
+
+.custom-checkbox input[type="checkbox"]:checked{
+    background-color: var(--green);
+    border-color: var(--green);
+}
+.custom-checkbox input[type="checkbox"]:focus{
+    box-shadow: 0 0 0 0.25rem rgba(56, 141, 3, 0.25);
+}
+
+.cancel-btn>a{
+    text-decoration: none;
+    color: var(--green) !important;
+}
+
+@media (width<=576px) {
+    .notificationsSettings{
+        padding: 2rem 1rem 5rem 1rem;
+    }
+
+.table-notif h6{
+    font-size: 13px;
+}
+
+.table-notif span{
+    font-size: 11px;
+}
+}

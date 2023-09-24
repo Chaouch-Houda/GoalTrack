@@ -1,0 +1,23 @@
+.settingsPrivacy{
+    padding: 2rem 5rem 5rem 3rem;
+    font-family: var(--ff-one);
+}
+
+.cancel-btn>a{
+    text-decoration: none;
+    color: var(--green) !important;
+}
+.input-p{
+    max-width: 180px;
+    font-size: 13px !important;
+}
+/* .input-p:focus{
+    border-color: var(--green) !important;
+    box-shadow: 0 0 0 0.1rem rgba(57, 141, 3,1) !important;
+} */
+
+@media (width<=576px) {
+    .settingsPrivacy{
+        padding: 2rem 1rem 5rem 1rem;
+    }
+}

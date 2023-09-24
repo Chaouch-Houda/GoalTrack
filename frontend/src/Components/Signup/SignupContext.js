@@ -6,7 +6,6 @@ const SignupProvider = ({ children }) => {
   const [showSignup, setShowSignup] = useState(false);
 
   const openSignup = () =>{
-    if(showSignup===false)
     setShowSignup(true);
   };
 

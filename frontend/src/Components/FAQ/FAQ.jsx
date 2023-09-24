@@ -1,28 +1,36 @@
 import React, { useState } from 'react'
 import "./FAQ.css"
 import {CaretDown,CaretUp} from "phosphor-react"
-import {faqData} from "../../ComponentsData/faqData"
+import {faqData} from "../../componentsData/faqData"
+import CustomAnimation from '../../animation/CustomAnimation'
+import {animate, delay, motion} from "framer-motion"
 const FAQ = ()=> {
   const [isAnswerVisible, setIsAnswerVisible] = useState(null);
 
   const handleToggleAnswer = (i) => {
     isAnswerVisible===i? setIsAnswerVisible(null) : setIsAnswerVisible(i);
   };
+  const animate ={y:0 ,opacity:1,transition:{type:"ease-in-out",duration: 0.8}};
+  const initial ={y:40 ,opacity: 0};
+  const [animation0,ref]=CustomAnimation(1,animate,initial);
+  const [animation1,ref1]=CustomAnimation(0.7,animate,initial);
+  const [animation2,ref2]=CustomAnimation(1,animate,initial);
+
 
   return (
-    <section className='faq' id='FAQ'>
-        <h1 className='font1'>FAQ</h1>
-        <div className="faq-items">
+    <section className='faq' id='FAQ' ref={ref1}>
+        <h1 className='font1' ref={ref}>FAQ</h1>
+        <div className="faq-items" ref={ref2}>
           {faqData.map((item,index)=>(
-            <div className="faq-item" key={index}>
-              <div className="faq-question" onClick={()=>handleToggleAnswer(index)} style={{ border: isAnswerVisible ? 'none' : 'px solid rgba(255,255,255,0.1)' }}>
+            <motion.div className="faq-item" key={index}  animate={index===0 ? animation0 : index===1? animation1 : animation2} transition={{delay:({index}+1)*200}}>
+              <div className="faq-question" onClick={()=>handleToggleAnswer(index)} style={{ border: isAnswerVisible ? 'none' : 'px solid rgba(255,255,255,0.1)' }} >
                 <span>{item.question}</span>
                 {isAnswerVisible===index ? <CaretUp/>: <CaretDown/>}
               </div>
               <div className={isAnswerVisible!==index ? "faq-answer": "show"}>
                 {item.answer}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

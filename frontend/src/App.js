@@ -1,46 +1,53 @@
 import './App.css';
-import FAQ from './Components/FAQ/FAQ';
-import Home from './Components/Home/Home';
-import Plan from './Components/Plans/Plan';
-import Testimonials from './Components/Testimonials/Testimonials';
-import About from './Components/About/About';
-import Contact from './Components/Contact/Contact';
-import Footer from './Components/Footer/Footer';
 import React from 'react';
-import { SignupProvider } from './Components/Signup/SignupContext';
-import { LoginProvider } from './Components/Login/LoginContext';
+import { SignupProvider } from './Components/signup/SignupContext';
+import { LoginProvider } from './Components/login/LoginContext';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
-import Signup from './Components/Signup/Signup';
+import UserDashboard from './pages/userDashboard/UserDashboard';
+import LandingPage from './pages/LandingPage';
+import History from './Components/history/History';
+import Dashboard from './Components/dashboard/Dashboard';
+import AccountSettings from './Components/accountSettings/AccountSettings';
+import PrivacySettings from './Components/privacySettings/PrivacySettings';
+import NotificationsSettings from './Components/notificationsSettings/NotificationsSettings';
+import AllNotifications from './Components/notifications/AllNotifications';
+import { SidebarProvider } from './Components/Sidebar/sidebarContext';
+import Profile from './Components/profile/Profile';
+import { FavoritesProvider } from './Components/favorites/FavoritesContext';
+import Login from './Components/login/Login';
+import Signup from './Components/signup/Signup';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={
-            <div id='InternautePage'>
-              <SignupProvider>
-                <LoginProvider>
-                  <Home/>
-                </LoginProvider>
-                <About/>
-                <Testimonials/>
-              </SignupProvider>
-            </div>
-          } />
-          <Route path='/connected' element={
-            <div id='ConnectedUserPage'>
-              <Footer/>
-            </div>
-          } />
-          
-        </Routes>
-          <Plan/>
-          <FAQ/>
-          <Contact/>
-          <Footer/>
+        <SignupProvider>
+          <LoginProvider>
+            <SidebarProvider>
+              <FavoritesProvider>
+                <Routes>
+                  <Route path='/' element={<LandingPage/>}>
+                    <Route path='signup' element={<Signup/>}/>
+                    <Route path='login' element={<Login/>}/>
+                  </Route>
+                  <Route path='/connected' element={<UserDashboard/>}>
+                    <Route index element={<Dashboard/>}/>
+                    <Route path='dashboard' element={<Dashboard/>}/>
+                    <Route path='profile' element={<Profile/>}/>
+                    <Route path='history'element={<History/>}/>
+                    <Route path='allNotifications'element={<AllNotifications/>}/>
+                    <Route path='accountSettings'element={<AccountSettings/>}/>
+                    <Route path='privacySettings' element={<PrivacySettings/>}/>
+                    <Route path='notificationsSettings' element={<NotificationsSettings/>}/>
+                  </Route>
+                  <Route path='*' element={<h1 style={{color:'white'}}>page not found</h1>}/>
+                </Routes>
+              </FavoritesProvider>
+            </SidebarProvider>
+          </LoginProvider>
+        </SignupProvider>
       </BrowserRouter>
       
-      {/* <Login/> */}
+      
     </div>
   );
 }

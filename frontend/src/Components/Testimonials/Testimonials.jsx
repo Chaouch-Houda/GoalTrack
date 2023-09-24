@@ -1,11 +1,10 @@
 import React,{ useState, useEffect, useContext } from 'react';
 import "./Testimonials.css";
-import {testimonialsData} from "../../ComponentsData/testimonialsData.js";
-import arrow_left from "../../Images/arrow-left.svg";
-import arrow_right from "../../Images/arrow-right.svg"
+import {testimonialsData} from "../../componentsData/testimonialsData.js";
 import{Row,Col} from "react-bootstrap"
-import { SignupContext } from '../Signup/SignupContext';
-import Signup from '../Signup/Signup';
+import { SignupContext } from '../signup/SignupContext';
+import Signup from '../signup/Signup';
+import {ArrowRight,ArrowLeft} from 'phosphor-react'
 const Testimonials = () => {
   
   // auto Scroll
@@ -78,8 +77,8 @@ const Testimonials = () => {
       <div className="arrows-t">
         <div></div>
         <div>
-          <button   onClick={handlePrev}><img src={arrow_left} alt="" /></button>
-          <button onClick={handleNext}><img src={arrow_right} alt="" /></button>
+          <button   onClick={handlePrev}><ArrowLeft color='var(--green)' size={24} weight='bold'/></button>
+          <button onClick={handleNext}><ArrowRight color='var(--green)' size={24} weight='bold'/></button>
         </div>
       </div>
 
@@ -87,7 +86,7 @@ const Testimonials = () => {
       <span style={{color:'white'}}>Are you ready to take part in an amazing experience?</span>
       <button onClick={openSignup}>
         <span>SIGN UP</span>
-        <img src={arrow_right} alt="" />
+        <ArrowRight color='var(--green)' size={24} weight='bold'/>
       </button>
       </div>
       {showSignup && <Signup/>}

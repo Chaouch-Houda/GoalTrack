@@ -1,16 +1,11 @@
 .custom-overlay{
     background: transparent !important;
-}
-.signup{ 
     top: 0%;
     position: fixed;
     width: 100%;
     min-height: 100vh;
     backdrop-filter: blur(20px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* z-index: 100; */
+    z-index: 100;
 }
 .signup-container{
     max-width: 450px !important;
@@ -18,9 +13,9 @@
     margin: 3rem;
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 24px;
-    background-color: rgba(17, 35, 57, 0.6);
-    /* background-image: linear-gradient(rgba(17, 35, 57, 0.8),rgba(17, 35, 57, 0.8)),url(../../Images/javier-miranda-MrWOCGKFVDg-unsplash.jpg); */
-    background-size: cover ;
+    background-color: rgba(17, 35, 57, 0.8);
+    /* background-image: linear-gradient(rgba(17, 35, 57, 0.8),rgba(17, 35, 57, 0.8)),url(../../Images/javier-miranda-MrWOCGKFVDg-unsplash.jpg);
+    background-size: cover ; */
     backdrop-filter: blur(30px);
     overflow: hidden;
     max-height: 100dvh;
@@ -32,41 +27,65 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 2rem;
     padding: 0 1rem;
 }
 
-
+.input-signup{
+    position: relative;
+    width: 100%;
+    max-width: 20rem;
+    display: flex;
+    align-items: center;
+    border-bottom:1px solid rgba(255, 255, 255, 0.412)!important;
+}
+.input-signup .input-ls:focus{
+    
+    border-color: transparent !important;
+    box-shadow: 0 0 0 0.1rem transparent !important ;
+}
 
 .btn-form-signup{
     max-width: 180px;
     width: 60%;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     /* border-radius: 7px !important; */
-    border: none;
     background: var(--green) !important;
+    border:0.3px solid white !important;
+    box-shadow: 0 0 0px white;
     margin-top: 1rem ;
 }
-/* .btn-form-signup:hover{
-    
-} */
+.btn-form-signup:hover{
+    box-shadow: 0 0 3px white;
+}
 .signup-container h1{
     color: var(--green) !important;
 }
 
+
 .input-ls{
-    max-width: 70%;
+    width: 100%;
+    max-width: 17rem;
     background-color: transparent !important;
     border: none !important;
-    border-bottom:1px solid rgba(255, 255, 255, 0.412)!important;
-    border-radius:0 !important;
+    /* border-bottom:1px solid rgba(255, 255, 255, 0.412)!important; */
+    border-radius:0px !important;
     color: white !important;
   }
   
   .input-ls::placeholder{
     color: rgba(255, 255, 255, 0.4) !important;
   }
+
+  .input-error{
+    position: absolute;
+    left: 0px;
+    text-align: start;
+    width: 100%;
+    font-size: min(12px,4vw);
+  }
+
 
 .empty-div{
     height: 0.5px;
@@ -75,24 +94,41 @@
     background-color: white;
 }
 
+.input-checkbox .form-check-input {
+    width: 14px; 
+    height: 14px;
+    background-color: transparent !important;
+    color: var(--green) !important;
+    border-color: var(--green) !important;
+    border-radius: 2px !important;
+  }
+  .input-checkbox .form-check-input:checked {
+    background-color: var(--green) !important;
+  }
+
 .terms{
-    font-size: min(14px,4vw);
+    width: 90%;
     text-align: start;
-    padding-top: 4px;
+    margin-top: 1.1rem;
+    font-size: min(12px,4vw);
+    margin-left: 10px;
 }
 
-.terms>span:nth-child(2),
-.terms>span:nth-child(4){
+.terms-text>span:nth-child(2),
+.terms-text>span:nth-child(4){
     color: var(--green);
     cursor: pointer;
 }
 
-.terms>span:nth-child(1),
-.terms>span:nth-child(3){
+.terms-text>span:nth-child(1),
+.terms-text>span:nth-child(3){
     color: rgba(255, 255, 255, 0.412) ;
 }
 
-
+.social-icon:hover{
+    cursor: pointer;
+    color: var(--green);
+}
 .switch-text{
     color:rgba(255,255,255,0.5);
     margin-right: 1rem;
@@ -105,3 +141,7 @@
     cursor: pointer;
 }
 
+
+
+  
+  

@@ -1,12 +1,12 @@
 .contact-us {
-    padding: 5rem 0;
+    padding: 5rem 1rem;
     width: 100%;
     font-family: var(--ff-one);
   }
 
 
 .contact-container{
-    background-image: linear-gradient(rgba(17, 35, 57, 0.6),rgba(17, 35, 57, 0.6)),url(../../Images/javier-miranda-MrWOCGKFVDg-unsplash.jpg);
+    background-image: linear-gradient(rgba(17, 35, 57, 0.6),rgba(17, 35, 57, 0.6)),url(../../assets/images/javier-miranda-MrWOCGKFVDg-unsplash.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -54,25 +54,16 @@
 
 .socialMedia-c{
   display: flex;
-  justify-content: end;
-  padding: 5rem 0;
+  justify-content: center;
   color: var(--green);
-  font-size: 12px;
   padding: 1rem !important;
 }
 
 .socialMedia-c>div{
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  /* text-align: start; */
   gap: 1rem;
 }
-
-/* .socialMedia-c>div>div{
-  display: flex;
-  gap: 1rem;
-} */
 
 .input-c{
   max-width: 70%;

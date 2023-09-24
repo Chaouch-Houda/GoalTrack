@@ -1,13 +1,13 @@
-import lock from "../Images/lock-duotone.svg";
-import lock1 from "../Images/lock-duotone(1).svg";
-import highlights from "../Images/pen-duotone.svg";
-import highlights1 from "../Images/pen-duotone(1).svg";
-import statistics from "../Images/chart-bar-duotone.svg";
-import statistics1 from "../Images/chart-bar-duotone(1).svg";
-import live from "../Images/video-duotone.svg";
-import live1 from "../Images/video-duotone(1).svg";
-import person from "../Images/person-duotone.svg";
-import person1 from "../Images/person-duotone(1).svg";
+import lock from "../assets/images/lock-duotone.svg";
+import lock1 from "../assets/images/lock-duotone(1).svg";
+import highlights from "../assets/images/pen-duotone.svg";
+import highlights1 from "../assets/images/pen-duotone(1).svg";
+import statistics from "../assets/images/chart-bar-duotone.svg";
+import statistics1 from "../assets/images/chart-bar-duotone(1).svg";
+import live from "../assets/images/video-duotone.svg";
+import live1 from "../assets/images/video-duotone(1).svg";
+import person from "../assets/images/person-duotone.svg";
+import person1 from "../assets/images/person-duotone(1).svg";
 
 export const plans = [
     {   

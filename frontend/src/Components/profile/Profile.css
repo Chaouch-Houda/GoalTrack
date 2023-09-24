@@ -1,0 +1,28 @@
+.profile{
+    background-color: #27374B;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 2px;
+    font-family: var(--ff-one);
+}
+.img-pro{
+    background: url(../../assets/images/user5.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 9rem;
+    width: 9rem;
+    border-radius: 50%;
+    margin: 1rem;
+}
+.info-p{
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    padding: 0.3rem;
+    overflow: hidden;
+    border: 1px solid white;
+    border-radius: 0.375rem; 
+} 
+span{
+    font-size: min(13px,6vw);
+    letter-spacing: 0.3px;
+}
+

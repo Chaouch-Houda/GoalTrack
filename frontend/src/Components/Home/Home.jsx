@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import "./Home.css";
-import Home_background from "../../Videos/Home_background.mp4"
-import device_mobile from "../../Images/device-mobile.svg"
-import play from "../../Images/play.svg"
+import Home_background from "../../assets/videos/Home_background.mp4"
 import { motion } from 'framer-motion';
-import Header from '../Header/Header';
+import {Play,DeviceMobile} from 'phosphor-react'
+import Header from '../header copy/Header';
+// import Header from '../header/Header';
 
 const Home = () => {
   return (
@@ -28,8 +28,8 @@ const Home = () => {
           </motion.p>
 
           <motion.div className="buttons-h" initial={{ x: -20 , opacity: 0 }} animate={{ x: 0, opacity:1 }} transition={{ duration: 0.8, ease: 'easeInOut',delay:0.3 }}>
-            <button><img src={device_mobile} alt="mobile" /> Get The App</button>
-            <button><img src={play} alt="play" /> Watch The Video</button>
+            <button><DeviceMobile color='var(--green)' size={30} weight='regular'/> Get The App</button>
+            <button><Play color='var(--green)' size={30} weight='regular'/> Watch The Video</button>
           </motion.div>
         </div>
       </div>
