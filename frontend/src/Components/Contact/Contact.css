@@ -53,16 +53,8 @@
   }
 
 .socialMedia-c{
-  display: flex;
-  justify-content: center;
   color: var(--green);
   padding: 1rem !important;
-}
-
-.socialMedia-c>div{
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 }
 
 .input-c{
@@ -78,15 +70,7 @@
   color: rgba(255, 255, 255, 0.412) !important;
 }
 
-@media(width<=768px){
-  .socialMedia-c{
-    justify-content: center;
 
-  }
-  .socialMedia-c>div{
-    flex-direction: row;
-  }
-}
 
 
 

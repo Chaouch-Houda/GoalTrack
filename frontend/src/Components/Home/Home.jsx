@@ -28,8 +28,8 @@ const Home = () => {
           </motion.p>
 
           <motion.div className="buttons-h" initial={{ x: -20 , opacity: 0 }} animate={{ x: 0, opacity:1 }} transition={{ duration: 0.8, ease: 'easeInOut',delay:0.3 }}>
-            <button><DeviceMobile color='var(--green)' size={30} weight='regular'/> Get The App</button>
-            <button><Play color='var(--green)' size={30} weight='regular'/> Watch The Video</button>
+            <button><DeviceMobile color='var(--green)' size={30} weight='regular'/><span>Get The App</span></button>
+            <button><Play color='var(--green)' size={30} weight='regular'/> <span>Watch The Video</span></button>
           </motion.div>
         </div>
       </div>

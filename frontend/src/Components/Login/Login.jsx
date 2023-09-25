@@ -1,9 +1,9 @@
 import React, {useState } from 'react';
 import {X,InstagramLogo,FacebookLogo,LinkedinLogo,GoogleLogo, User, Lock, Eye, EyeSlash} from 'phosphor-react';
 import {Button,Form} from "react-bootstrap";
-import "../signup/Signup.css";
+import "../Signup/Signup.css";
 import { useForm } from 'react-hook-form';
-import RenderInput from '../signup/RenderInput';
+import RenderInput from '../Signup/RenderInput';
 import axios from 'axios';
 import { Link, NavLink} from 'react-router-dom';
 
@@ -55,7 +55,7 @@ const Login = (props) =>{
           };
  
   return (
-    <div className="custom-overlay d-flex justify-content-center align-items-center">
+    <div className="custom-overlay d-flex justify-content-center align-items-center p-3">
         <div className='signup-container'>
             <div className='d-flex justify-content-end'>
                 <NavLink to='/'><X width="24px" height={"24px"} color='rgba(255,255,255,0.5)' cursor={"pointer"} /></NavLink>

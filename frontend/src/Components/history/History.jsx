@@ -43,7 +43,7 @@ const History = () => {
         <h6>Videos Covered Previously</h6>
         {matchData.map((match,index)=>(
             <div className='d-flex align-items-center justify-content-center w-100' key={index} >
-              <div className='w-100 h-100 matchh d-flex flex-column justify-content-between p-3 pt-2 mx-2 '>
+              <div className='w-100 h-100 matchh d-flex flex-column justify-content-between py-3 px-1 mx-2 '>
                 <div className='d-flex to-column justify-content-evenly align-items-center '>
                   <div className='w-100 d-flex flex-column justify-content-center ' style={{maxWidth:'400px'}}>
                   <div className=' d-flex align-items-baseline'>

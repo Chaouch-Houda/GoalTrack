@@ -31,9 +31,11 @@
 }
 @media (width>576px){
     .mClosed{
+        width: calc(100% - 5rem) !important;
         margin-left: 5rem;
     }
     .mOpen{
+        width: calc(100% - 18rem) !important;
         margin-left: 18rem;
     }
 }

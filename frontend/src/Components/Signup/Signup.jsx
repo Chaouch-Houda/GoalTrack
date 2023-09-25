@@ -35,7 +35,7 @@ const Signup = () => {
       };
 
     return (
-        <div className='custom-overlay d-flex justify-content-center align-items-center'>
+        <div className='custom-overlay d-flex justify-content-center align-items-center p-3'>
             <div className='signup-container'>
                 <div className='d-flex justify-content-end'>
                     <NavLink to='/'><X width="24px" height={"24px"} color='rgba(255,255,255,0.5)' cursor={"pointer"} /></NavLink>

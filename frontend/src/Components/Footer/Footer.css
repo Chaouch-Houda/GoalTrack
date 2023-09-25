@@ -1,26 +1,23 @@
 .footer{
-    color: white !important;
-    width: 100%;
+    max-width: 100%;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
     background-color: rgba(9, 12, 9, 0.1);
 }
-.form-f{
-    max-width: 100% !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .form-f-row{
     width: 100% !important;
     max-width: 700px;
     margin-bottom: 2rem;
 }
 
-/* .form-f-btn{
-    background-color: var(--green);
-    font-weight: 600;
-    font-size: 16px;
-} */
+.form-f-btn{
+    width: min(102px,26vw);
+    font-size: min(16px,4.5vw) !important;
+    margin-left: 0.5em;
+}
+.nav-list{
+    white-space: nowrap !important;
+}
 .nav-list>a{
 text-decoration: none;
 color: rgba(255, 255, 255, 0.625) !important;

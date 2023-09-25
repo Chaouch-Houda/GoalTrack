@@ -45,14 +45,14 @@
 
 // export default Notifications;
 import React, { useContext, useState } from 'react'
-import '../../Components/signup/Signup.css'; // on n'est pas obligé de l'importer mais juste pour comprendre qu'on va utiliser des public classes from Signup.css :custom-overlay
+import '../Signup/Signup.css'; // on n'est pas obligé de l'importer mais juste pour comprendre qu'on va utiliser des public classes from Signup.css :custom-overlay
 import {IoMdClose} from 'react-icons/io'
 import {TbSettings} from "react-icons/tb";
 import {MdOutlineNotificationsActive} from "react-icons/md";
 import {notifications as notifArray} from '../../componentsData/notifData';
 import './Notifications.css'
 import { NavLink } from 'react-router-dom';
-import {sidebarContext} from '../Sidebar/sidebarContext';
+import {sidebarContext} from '../sidebar/sidebarContext';
 const Notifications = ({toggleNotifications}) => {
   // const {toggleNotifications} = props;
   const [notifications, setNotifications] = useState(notifArray);

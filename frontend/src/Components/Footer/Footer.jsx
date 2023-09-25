@@ -1,73 +1,61 @@
 import React from 'react';
-import {Row,Col,Container,Form, Nav, Button} from "react-bootstrap";
+import {Form, Nav, Button} from "react-bootstrap";
 import "./Footer.css"
 import { Link } from 'react-router-dom';
 export default function Footer() {
   return (
-    <section className='footer text-center'>
-      <Container className='p-4' style={{fontSize:"13px"}}>
-        {/* <Row className='align-items-center mb-3'>
-        <Col className='mb-4' xs={12} md={4}>
-            <p style={{maxWidth:"400px" ,marginTop:'2rem',textAlign:"justify"}}>Whether you're a player, a coach, or a dedicated fan, let AI Match Analyser be your ally in the pursuit of sporting excellence. Embrace the power of AI, and let's create a future where every match is an inspiration to achieve greatness.</p>
-          </Col>
-        </Row> */}
-        <Row>
-        <Col xs={12} md={12}>
-            <Form action='' className='form-f m-0'>
-              <Row className='form-f-row'>
-                <Col className='mb-3 fs-5' md={12} xs={12} >
-                  <strong>Sign up for our newsletter</strong>
-                </Col>
-                <Col md={10} xs={9} className='d-flex justify-content-center'>
-                  <Form.Label style={{fontSize:"15px",fontWeight:"600"}}>Email address</Form.Label>
-                  <Form.Control contrast="true" type='email' label='Email address' placeholder='name@gmail.com' className='mx-1 m-4 mt-0' style={{maxWidth:"350px"}}/>
-                </Col>
-                <Col md={2} xs={3}>
-                  <Button className="green-btn " type='submit'>Subscribe</Button>
-                </Col>
-              </Row>
-            </Form>
-        </Col>
-        </Row>
-        <Row className='justify-content-evenly'> 
-          <Col md={2} xs={12} className='colF mb-4 mb-md-0  text-start '>
-            <h6 className='text-capitalize'> Information and Presentation</h6>
+    <section className='w-100 footer text-center text-white'>
+      <div className='w-100 p-4 px-2' style={{fontSize:"13px"}}>
 
+        <div className='w-100 d-flex flex-column align-items-center justify-content-center gap-3 my-5 pb-3'>
+          <div>
+            <strong style={{fontSize:'min(20px,7vw)',whiteSpace:'nowrap'}}>Sign up for our newsletter</strong>
+          </div>
+          <Form className='w-100 d-flex justify-content-evenly align-items-start' style={{maxWidth:'650px'}}>
+            <Form.Group className='w-100 d-flex align-items-baseline gap-2' style={{maxWidth:'500px'}}>
+              <Form.Label style={{fontSize:"min(13px,4.5vw)",fontWeight:"600",whiteSpace:'nowrap'}}>Email address</Form.Label>
+              <Form.Control contrast="true" type='email' label='Email address' placeholder='name@gmail.com' className='w-100' style={{maxWidth:"350px"}}/>
+            </Form.Group>
+            <div>
+            <Button className="green-btn form-f-btn d-flex justify-content-center align-items-center " type='submit'>Subscribe</Button>
+            </div>
+          </Form>
+        </div>
+
+        <div className='w-100 d-flex flex-column flex-sm-row text-start justify-content-sm-evenly '>
+          <div className='w-100 d-flex flex-column gap-1 ' style={{maxWidth:'250px'}}>
+            <h6 className='text-capitalize'> Information and Presentation</h6>
             <Nav className='nav-list list-unstyled mb-0 d-flex flex-column'>
               <Nav.Link href='#Home'>Home</Nav.Link>
               <Nav.Link href='#About'>About Us</Nav.Link>
               <Nav.Link href='#Testimonials'>Testimonials</Nav.Link>
               <Nav.Link href='#Contact'>Contact Us</Nav.Link>
             </Nav>
-          </Col>
-
-          <Col md={2} xs={12} className='colF mb-4 mb-md-0 text-start '>
-            <h6  className='text-capitalize'>Features and Plans</h6>
-
-            <Nav className=' nav-list list-unstyled mb-0 d-flex flex-column'>
-              <Nav.Link href='#Plans'>Plans</Nav.Link>
-              <Nav.Link href='#FAQ'>FAQ</Nav.Link>
-              <Nav.Link href='#'>Featured Matches</Nav.Link>
-              <Nav.Link href='#'>AI Algorithms</Nav.Link>
-            </Nav>
-          </Col>
-
-          <Col  md={2} xs={12} className='colF mb-md-0 text-start '>
-            <h6  className='text-capitalize'>Resources and Support</h6>
-
+          </div>
+          <div className='w-100 d-flex flex-column gap-1 ' style={{maxWidth:'250px'}}>
+            <h6 className='text-capitalize'> Information and Presentation</h6>
             <Nav className='nav-list list-unstyled mb-0 d-flex flex-column'>
-              <Nav.Link href='#'>Related Websites</Nav.Link>
-              <Nav.Link href='#login'>Updates</Nav.Link>
-              <Nav.Link href='#'>Community</Nav.Link>
-              <Nav.Link href='#'>help & Support</Nav.Link>
+              <Nav.Link href='#Home'>Home</Nav.Link>
+              <Nav.Link href='#About'>About Us</Nav.Link>
+              <Nav.Link href='#Testimonials'>Testimonials</Nav.Link>
+              <Nav.Link href='#Contact'>Contact Us</Nav.Link>
             </Nav>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+          <div className='w-100 d-flex flex-column gap-1 ' style={{maxWidth:'250px'}}>
+            <h6 className='text-capitalize'> Information and Presentation</h6>
+            <Nav className='nav-list list-unstyled mb-0 d-flex flex-column'>
+              <Nav.Link href='#Home'>Home</Nav.Link>
+              <Nav.Link href='#About'>About Us</Nav.Link>
+              <Nav.Link href='#Testimonials'>Testimonials</Nav.Link>
+              <Nav.Link href='#Contact'>Contact Us</Nav.Link>
+            </Nav>
+          </div>
+        </div>
+      </div>
 
-      <div className='text-center d-flex p-3 justify-content-around' style={{ boxShadow:" 0px 0px 3px rgba(0, 0, 0, 0.3)",fontSize:'12px'}}>
-        <span>© AI Sports Highlights, 2023</span>
-        <span>Terms</span>
+      <div className='text-center d-flex py-3 px-2 justify-content-around' style={{ boxShadow:" 0px 0px 3px rgba(0, 0, 0, 0.3)",fontSize:'min(12px,4vw)',whiteSpace:'nowrap'}}>
+        <span>© AI Sports Highlights, 2023 </span>
+        <span>Terms </span>
         <span>Privacy Policy</span>
       </div>
     </section>

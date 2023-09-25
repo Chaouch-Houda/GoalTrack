@@ -2,8 +2,8 @@ import "./Header.css"
 import logo from "../../assets/images/logo.png";
 import React, { useContext, useState } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { SignupContext } from "../signup/SignupContext";
-import Signup from "../signup/Signup";
+import { SignupContext } from "../Signup/SignupContext";
+import Signup from "../Signup/Signup";
 import { LoginContext } from "../login/LoginContext";
 import Login from "../login/Login";
 

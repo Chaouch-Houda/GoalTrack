@@ -1,6 +1,6 @@
 .all-history{
     width: 96%;
-    max-width: 1000px;
+    max-width: 1200px;
     /* position: absolute;top: 0; plus responsive avec main-content pos relative et overflow-y:scroll */
     background-color: #27374B;
     border-radius: 2px;

@@ -3,8 +3,7 @@ import basketball_players from "../../assets/images/basketball_players.jpg";
 import football_player from "../../assets/images/football_player.jpg";
 import football from "../../assets/images/football.jpg";
 import basketball from "../../assets/images/basketball.jpg"
-import {aboutData} from "../../componentsData/AboutData"
-import {aboutData2} from "../../componentsData/AboutData"
+import {aboutData, aboutData2} from "../../componentsData/aboutData"
 import {Zoom} from 'react-reveal'
 import {Col, Container,Row} from "react-bootstrap";
 import {motion} from 'framer-motion';
@@ -31,11 +30,11 @@ const [animation3,ref3]= CustomAnimation(0.2, {y:0,opacity:1,scale:1,transition:
                 </motion.div>
             </Col>
             <Col ref={ref2} xs={12} sm={12} lg={6} className="right-side-w">
-                <motion.h1 animate={animation2} transition={{ delay: 0.1 }} >Why GoalTrack Is The Best Choice</motion.h1>
+                <motion.h1 animate={animation2} transition={{ delay: 0.1 }}>Why GoalTrack Is The Best Choice</motion.h1>
                     {aboutData.map((item,i)=>(
                         <motion.div className="item" key={i} animate={animation2} transition={{delay: 0.1 * (i + 1)}} >
                             <img src={item.src} alt={item.alt} />
-                            <p>{item.text}</p>
+                            <p className='px-1'>{item.text}</p>
                         </motion.div>
                     ))}
             </Col>

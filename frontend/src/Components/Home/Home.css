@@ -41,7 +41,8 @@ video{
 }
 
 .content>h1{
-    font-size: 60px;
+    font-size: min(60px,14vw);
+    white-space: nowrap;
     padding: 1rem;
     text-shadow: 1px 1px 10px black;
     letter-spacing: 2px;
@@ -49,25 +50,29 @@ video{
 
 .content>p{
     padding: 10px 20px;
+    font-size: min(16px,6vw);
     width: fit-content;
     max-width: 55rem; 
     text-shadow: 1px 1px 10px hsl(0, 0%, 64%);
 }
 
 .buttons-h>button{
-    width: 220px;
+    width: min(220px,65vw);
     height: fit-content;
-    font-size: medium;
-    transition: 0.3s ease-in-out;
+    /* font-size: medium; */
     border: 1px solid rgba(255, 255, 255, 0);
-    padding: 10px;
-    gap: 10px;
+    /* padding: 10px; */
+    gap:0.3em;
+    transition: 0.3s ease-in-out;
 }
 .buttons-h>button:hover{
     gap: 20px;
     border-color: rgba(255, 255, 255, 0.3);
 }
-
+.buttons-h>button>span{
+    font-size: min(16px,6vw);
+    white-space: nowrap;
+}
 .buttons-h>button:nth-of-type(1){
     margin-bottom: 2rem;
     background: linear-gradient(135deg,#CED9D1,var(--green));

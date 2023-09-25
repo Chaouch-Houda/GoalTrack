@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import { SignupProvider } from './Components/signup/SignupContext';
-import { LoginProvider } from './Components/login/LoginContext';
+// import { SignupProvider } from './Components/signup/SignupContext';
+// import { LoginProvider } from './Components/login/LoginContext';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import UserDashboard from './pages/userDashboard/UserDashboard';
 import LandingPage from './pages/LandingPage';
@@ -11,17 +11,19 @@ import AccountSettings from './Components/accountSettings/AccountSettings';
 import PrivacySettings from './Components/privacySettings/PrivacySettings';
 import NotificationsSettings from './Components/notificationsSettings/NotificationsSettings';
 import AllNotifications from './Components/notifications/AllNotifications';
-import { SidebarProvider } from './Components/Sidebar/sidebarContext';
+import { SidebarProvider } from './Components/sidebar/sidebarContext';
 import Profile from './Components/profile/Profile';
 import { FavoritesProvider } from './Components/favorites/FavoritesContext';
 import Login from './Components/login/Login';
-import Signup from './Components/signup/Signup';
+import Signup from './Components/Signup/Signup';
+
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <SignupProvider>
-          <LoginProvider>
+        {/* <SignupProvider>
+          <LoginProvider> */}
             <SidebarProvider>
               <FavoritesProvider>
                 <Routes>
@@ -43,8 +45,8 @@ function App() {
                 </Routes>
               </FavoritesProvider>
             </SidebarProvider>
-          </LoginProvider>
-        </SignupProvider>
+          {/* </LoginProvider>
+        </SignupProvider> */}
       </BrowserRouter>
       
       

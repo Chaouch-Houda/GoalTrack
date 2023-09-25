@@ -9,7 +9,7 @@ import FileUpload from '../fileUpload/FileUpload'
 import {ArrowRight} from 'phosphor-react';
 import Match from '../matchSlider/MatchSlider'
 import bg1 from '../../assets/images/bg1.jpg'
-import { sidebarContext } from '../Sidebar/sidebarContext'
+import { sidebarContext } from '../sidebar/sidebarContext'
 import Lives from '../lives/Lives'
 import Footer from '../footer/Footer'
 import FAQ from '../faq/FAQ'
@@ -53,23 +53,21 @@ const Dashboard = () => {
     pauseOnFocus: false, // Empêche la pause en mettant le focus sur le slider
   };
   
-  const {open}= useContext(sidebarContext);
-  
-
   return (
     <div className='cHomeRow ' style={{isolation:'isolate'}}>
-      <div>
+      <div className='d-flex flex-column align-items-center'>
         <div className='top-0 bottom-0 position-fixed  ' style={{zIndex:'-1',left:0,right:0}}>
           <img src={bg1} className='w-100 h-100' alt="bg1" />
-        </div>
-        <Container className='w-100' >
-        {/* style={{backgroundColor:'rgba(17, 35, 57, 0.8)'}} */}
-          <Row style={{minHeight:'300px',zIndex:'2'}}>
-            <Col xl={12} md={12} sm={12} xs={12}>
-            </Col>
-          </Row>
-          <Row className={` pt-5 px-3 overflow-hidden`}> 
-            <Col xl={open ? 9 : 10} md={open ? 6 : 9} sm={9} xs={12} className='d-flex flex-column justify-content-center align-items-center gap-5 '>
+        </div> 
+
+        <div className='w-100'style={{maxWidth:'1200px'}} >
+          <div style={{minHeight:'300px',zIndex:'2'}}>
+            <div>
+            </div>
+          </div>
+
+          <div className={`d-flex flex-column flex-md-row justify-content-around pt-5 px-3 overflow-hidden`}> 
+            <div className='d-flex flex-column justify-content-center align-items-center gap-5 '>
               <FileUpload/>
                 {/* <Slider {...settings} style={{width:"300px"}}>
                   {videos.map((video, index) => (
@@ -80,8 +78,8 @@ const Dashboard = () => {
                     </div>
                   ))}
                 </Slider> */}
-            </Col> 
-            <Col xl={2} md={open ? 2 :3} sm={3} xs={12} className='p-1 py-3 d-flex justify-content-center' >
+            </div> 
+            <div className='p-1 py-3 d-flex justify-content-center' >
               <div className="suggestion p-2">
                 <span style={{fontSize:'min(14px,9vw)',color:'var(--green)'}}>Suggest Improvements</span>
                 <Form onSubmit={handleSuggestionSubmit} className='d-flex flex-column gap-1'>
@@ -121,34 +119,30 @@ const Dashboard = () => {
                   <Button type="submit" className='green-btn suggestion-btn p-0'>Send</Button>
                 </Form>
               </div>
-            </Col>
+            </div>
               {/* <Testimonials/>
               <Plan/>
               <FAQ/> */}
-          </Row>
-          <Row>
-            <Col  xl={open ? 11 : 12} md={open ? 9 : 12} sm={12} xs={12} className='d-flex align-items-center justify-content-center'>
-              <Match/>
-            </Col>
-          </Row>
-          <Row>
-            <Col  xl={open ? 11 : 12} md={open ? 9 : 12} sm={12} xs={12} className='d-flex align-items-center justify-content-center'>
-              <Lives/>
-            </Col>
-          </Row>
-          <Row>
-          <Col  xl={open ? 11 : 12} md={open ? 9 : 12} sm={12} xs={12} className='d-flex flex-column align-items-center justify-content-center'>
+          </div>
+          
+          <div className='d-flex align-items-center justify-content-center'>
+            <Match/>
+          </div>
+          
+          <div className='d-flex align-items-center justify-content-center'>
+            <Lives/>
+          </div>
+
+          <div className='d-flex flex-column align-items-center justify-content-center'>
               <div className='mt-3' style={{width:'96%',backgroundColor:'var(--bg-color)'}}><FAQ/></div>
               <div style={{width:'96%',backgroundColor:'var(--bg-color)'}}><Contact/></div>
-            </Col>
-          </Row>
-      </Container>
-      <div className='' style={{backgroundColor:'var(--bg-color)'}}>
-      <Footer/>
-      </div>
+          </div>
+        </div>
+
+        <div className='w-100 d-flex justify-content-start' style={{backgroundColor:'var(--bg-color)'}}>
+          <Footer/>
+        </div>
     </div>
-      {/* jarrabt inou na7it Col w Row w kol composant n7otou fi div wn3tih width=90% w max-width=900px w position:absolute w container nrodou div wna3tih position:relative w w-100 wella ki tbedil width page les composants yit7arkou d'une manière plus souple  */}
-      
   </div>  
   )
 }

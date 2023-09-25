@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import "./FAQ.css"
 import {CaretDown,CaretUp} from "phosphor-react"
-import {faqData} from "../../componentsData/faqData"
 import CustomAnimation from '../../animation/CustomAnimation'
 import {animate, delay, motion} from "framer-motion"
+import {faqData} from '../../componentsData/faqData'
 const FAQ = ()=> {
   const [isAnswerVisible, setIsAnswerVisible] = useState(null);
 

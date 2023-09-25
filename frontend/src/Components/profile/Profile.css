@@ -21,7 +21,7 @@
     border: 1px solid white;
     border-radius: 0.375rem; 
 } 
-span{
+.profile>span{
     font-size: min(13px,6vw);
     letter-spacing: 0.3px;
 }

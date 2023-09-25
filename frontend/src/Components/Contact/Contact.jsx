@@ -25,8 +25,8 @@ const Contact = () => {
             </div>
           </Col>
 
-          <Col xs={12} sm={12} md={1} className='socialMedia-c'>
-            <div>
+          <Col xs={12} sm={12} md={1} className='socialMedia-c d-flex justify-content-center'>
+            <div className='d-flex flex-row flex-md-column justify-content-center gap-3  justify-content-md-start'>
               {socialMedias.map((s,i)=>(
                 <motion.div whileHover={{scale:1.1}} key={i}>
                   {s.icon}

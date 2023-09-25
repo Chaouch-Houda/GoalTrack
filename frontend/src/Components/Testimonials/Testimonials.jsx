@@ -2,9 +2,8 @@ import React,{ useState, useEffect, useContext } from 'react';
 import "./Testimonials.css";
 import {testimonialsData} from "../../componentsData/testimonialsData.js";
 import{Row,Col} from "react-bootstrap"
-import { SignupContext } from '../signup/SignupContext';
-import Signup from '../signup/Signup';
 import {ArrowRight,ArrowLeft} from 'phosphor-react'
+import { Link } from 'react-router-dom';
 const Testimonials = () => {
   
   // auto Scroll
@@ -48,7 +47,7 @@ const Testimonials = () => {
   };
 
    // to open the signup form 
-   const { showSignup, openSignup } = useContext(SignupContext);
+  //  const { showSignup, openSignup } = useContext(SignupContext);
 
 
 
@@ -82,14 +81,15 @@ const Testimonials = () => {
         </div>
       </div>
 
-      <div  className="ready-t">
+      <div  className="ready-t w-100 d-flex justify-content-center align-items-center gap-3">
       <span style={{color:'white'}}>Are you ready to take part in an amazing experience?</span>
-      <button onClick={openSignup}>
-        <span>SIGN UP</span>
+      <button>
+        <Link to='signup' className='to-signup w-100 h-100 text-white text-decoration-none d-flex align-items-center justify-content-center flex-nowrap gap-1'>
+        <span style={{whiteSpace:'nowrap',fontSize:'min(13px,4vw)'}}>SIGN UP</span>
         <ArrowRight color='var(--green)' size={24} weight='bold'/>
+        </Link>
       </button>
       </div>
-      {showSignup && <Signup/>}
     </section>
   )
 }
