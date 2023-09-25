@@ -1,9 +1,9 @@
 import React, {useState } from 'react';
 import {X,InstagramLogo,FacebookLogo,LinkedinLogo,GoogleLogo, User, Lock, Eye, EyeSlash} from 'phosphor-react';
 import {Button,Form} from "react-bootstrap";
-import "../Signup/Signup.css";
+import "../signup/Signup.css";
 import { useForm } from 'react-hook-form';
-import RenderInput from '../Signup/RenderInput';
+import RenderInput from '../signup/RenderInput';
 import axios from 'axios';
 import { Link, NavLink} from 'react-router-dom';
 

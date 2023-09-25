@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import RenderInput from '../Signup/RenderInput';
+import RenderInput from '../signup/RenderInput';
 import { useForm } from 'react-hook-form';
 import {Eye, EyeSlash} from 'phosphor-react';
 import './PrivacySettings.css';

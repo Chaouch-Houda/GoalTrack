@@ -15,7 +15,7 @@ import { SidebarProvider } from './Components/sidebar/sidebarContext';
 import Profile from './Components/profile/Profile';
 import { FavoritesProvider } from './Components/favorites/FavoritesContext';
 import Login from './Components/login/Login';
-import Signup from './Components/Signup/Signup';
+import Signup from './Components/signup/Signup';
 
 
 function App() {

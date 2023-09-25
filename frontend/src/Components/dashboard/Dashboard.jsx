@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import './Dashboard.css'
 import '../profile/Profile.css'
-import { Button, Col, Container, Form,Row} from 'react-bootstrap'
+import { Button, Form} from 'react-bootstrap'
 import video1 from '../../assets/videos/Home_background.mp4'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -9,7 +9,6 @@ import FileUpload from '../fileUpload/FileUpload'
 import {ArrowRight} from 'phosphor-react';
 import Match from '../matchSlider/MatchSlider'
 import bg1 from '../../assets/images/bg1.jpg'
-import { sidebarContext } from '../sidebar/sidebarContext'
 import Lives from '../lives/Lives'
 import Footer from '../footer/Footer'
 import FAQ from '../faq/FAQ'

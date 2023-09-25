@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import RenderInput from '../Signup/RenderInput';
+import RenderInput from '../signup/RenderInput';
 import './AccountSettings.css';
 import {Eye, EyeSlash} from 'phosphor-react';
 import { Link } from 'react-router-dom';

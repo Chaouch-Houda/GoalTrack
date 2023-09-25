@@ -45,7 +45,7 @@
 
 // export default Notifications;
 import React, { useContext, useState } from 'react'
-import '../Signup/Signup.css'; // on n'est pas obligé de l'importer mais juste pour comprendre qu'on va utiliser des public classes from Signup.css :custom-overlay
+import '../signup/Signup.css'; // on n'est pas obligé de l'importer mais juste pour comprendre qu'on va utiliser des public classes from Signup.css :custom-overlay
 import {IoMdClose} from 'react-icons/io'
 import {TbSettings} from "react-icons/tb";
 import {MdOutlineNotificationsActive} from "react-icons/md";
