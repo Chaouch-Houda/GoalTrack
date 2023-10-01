@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import {List} from "phosphor-react";
 import {NavLink,useLocation } from 'react-router-dom';
 import {BiNews,BiHistory} from "react-icons/bi";
@@ -23,7 +23,7 @@ const Sidebar = () => {
         //       ,arrow_icon:RiArrowDropDownLine,},
         {label:"profile",link:'profile',icon:RiAccountCircleLine,margin:true},
         {label:"History" , link:"history" , icon: BiHistory},
-        {label:"Favorites" , link:"#" , icon:MdFavoriteBorder },
+        {label:"Favorites" , link:"favorites" , icon:MdFavoriteBorder },
         {label:"Notifications" , link:"#" , icon: MdOutlineNotificationsActive,margin:true},
         {label:"Setting" , link:"#" , icon: TbSettings
                 ,submenu:[ {label:'Account',icon:RiAccountCircleLine,link:'accountSettings'},
@@ -38,40 +38,40 @@ const Sidebar = () => {
       const {open,setOpen,handleMenu,menuVisible,setMenuVisible,handleMenuVisible,openSubMenu,setOpenSubMenu,handleSubMenuToggle} = useContext(sidebarContext)
 
   // windowWidth pour stocker la largeur de la fenêtre
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   // Met à jour la largeur de la fenêtre en réponse à un événement de redimensionnement 
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth); 
-  };
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth); 
     };
-  }, []);
+    useEffect(() => {
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
 
-  useEffect(() => {
-    if (windowWidth> 576  && windowWidth < 800) {
-      setOpen(false);  //  Si la largeur de fenêtre est inférieure à 800 pixels, sidebar(5rem) seulement les icons qui sont affichés 
-    }
-    
-    else if(windowWidth <= 576) {
-      setOpen(true); //  Si la fenêtre est inférieure à 576 pixels, sidebar(18rem) toute est affichée .Ajouter setOpen(true) à la fonction handleMenuVisible ne résoudra pas entièrement le problème. Si le menu est déjà en position fermée (!open) lorsqu'il est affiché sur un grand écran et que la largeur est réduite, le menu ne s'ouvrira pas automatiquement. Dans ce cas, seuls les icônes pourraient être visibles, ce qui ne résoudra pas complètement la situation.
-    }
-  }, [windowWidth]); // Cet effet s'exécute chaque fois que windowWidth change
+    useEffect(() => {
+      if (windowWidth> 576  && windowWidth < 800) {
+        setOpen(false);  //  Si la largeur de fenêtre est inférieure à 800 pixels, sidebar(5rem) seulement les icons qui sont affichés 
+      }
+      
+      else if(windowWidth <= 576) {
+        setOpen(true); //  Si la fenêtre est inférieure à 576 pixels, sidebar(18rem) toute est affichée .Ajouter setOpen(true) à la fonction handleMenuVisible ne résoudra pas entièrement le problème. Si le menu est déjà en position fermée (!open) lorsqu'il est affiché sur un grand écran et que la largeur est réduite, le menu ne s'ouvrira pas automatiquement. Dans ce cas, seuls les icônes pourraient être visibles, ce qui ne résoudra pas complètement la situation.
+      }
+    }, [windowWidth]); // Cet effet s'exécute chaque fois que windowWidth change
 
-  const mediumWidth =  windowWidth > 576 && windowWidth < 800   ; 
-  const xsWidth =  windowWidth <= 576 ; 
-    
-
+    const mediumWidth =  windowWidth > 576 && windowWidth < 800   ; 
+    const xsWidth =  windowWidth <= 576 ; 
+      
   // Pour identifier l'élément actif dans le menu
-  const location = useLocation();
+    const location = useLocation();
   
   //pour gérer l'affichage de notifications 
-  const [showNotifications, setShowNotifications] = useState(false);
-  const toggleNotifications = () => {
-    setShowNotifications(!showNotifications);
-  };
+    const [showNotifications, setShowNotifications] = useState(false);
+    const toggleNotifications = () => {
+      setShowNotifications(!showNotifications);
+    };
+    
 
   return (
     <>
@@ -133,8 +133,8 @@ const Sidebar = () => {
           </div>
         </nav> 
         {/* Affichage conditionné de notifications  */}
-        {showNotifications && <Notifications toggleNotifications={toggleNotifications} />}
-        </>
+        {showNotifications && <Notifications toggleNotifications={toggleNotifications} showNotifications={showNotifications} setShowNotifications={setShowNotifications}/>}
+    </>
         // where we will call the Sidebar, we must put <Outlet/> component where the content will be rendered.
   );
 };

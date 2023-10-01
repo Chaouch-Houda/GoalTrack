@@ -44,7 +44,7 @@
 // }
 
 // export default Notifications;
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import '../signup/Signup.css'; // on n'est pas obligé de l'importer mais juste pour comprendre qu'on va utiliser des public classes from Signup.css :custom-overlay
 import {IoMdClose} from 'react-icons/io'
 import {TbSettings} from "react-icons/tb";
@@ -53,7 +53,9 @@ import {notifications as notifArray} from '../../componentsData/notifData';
 import './Notifications.css'
 import { NavLink } from 'react-router-dom';
 import {sidebarContext} from '../sidebar/sidebarContext';
-const Notifications = ({toggleNotifications}) => {
+
+
+const Notifications = ({setShowNotifications,toggleNotifications}) => {
   // const {toggleNotifications} = props;
   const [notifications, setNotifications] = useState(notifArray);
   const deleteNotification = (index) => {
@@ -62,8 +64,28 @@ const Notifications = ({toggleNotifications}) => {
     setNotifications(updatedNotifications);
   };
 const {open} = useContext(sidebarContext);
+
+// on veut que notifications se cachent lorsque on clique en dehors de notifications div
+const notifRef = useRef(null);
+useEffect(() => {
+  // le gestionnaire d'événements mousedown au document (qui est ajouté via document.addEventListener) détecte les clics en dehors du notifications div grâce à la fonction handleClickOutside
+    //Cette fonction sera exécutée chaque fois qu'un événement mousedown se produit sur le document
+    function handleClickOutside(event) {
+    if (notifRef.current && !notifRef.current.contains(event.target)) {
+      setShowNotifications(false);
+      // notifRef.current: Vérifie si la référence notifRef existe.
+      // !notifRef.current.contains(event.target) Vérifie si l'élément n'est pas enfant du div.   
+    }
+  }
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => {
+    //La fonction retournée par useEffect est utilisée pour nettoyer l'écouteur d'événements lors du démontage du composant. Cela garantit qu'il n'y a pas de fuites de mémoire ou d'écouteurs d'événements inutiles après que le composant a été retiré du DOM.
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+}, []);
+
   return (
-    <div className={`notifications-list ${open ? 'mOpen-notif' : 'mClosed-notif'}`}>
+    <div className={`notifications-list ${open ? 'mOpen-notif' : 'mClosed-notif'}`} ref={notifRef}>
       {/* <button className='bg-transparent p-0 m-0'><IoMdClose size={20}/></button> */}
       <div className='w-100 p-1 d-flex justify-content-between align-itels-center position-sticky top-0 ' style={{backgroundColor:'#27374B', boxShadow: '0 0px 0.9px rgba(0,0,0,0.5)' }}>
       <NavLink to='notificationsSettings'><TbSettings size={24} color='white'/></NavLink>
@@ -78,8 +100,7 @@ const {open} = useContext(sidebarContext);
           <div key={notif.id} className={`d-flex justify-content-between px-1 py-2`}>
             <div className='d-flex gap-2'>
               <div>
-                <img src={notif.image} alt="img" style={{width:'40px',height:'40px',borderRadius:'50%'}}/>
-                {/* <img src="" alt="" /> */}
+                <img src={notif.image} alt="img" style={{width:'35px',height:'35px',borderRadius:'50%'}}/>
               </div>
               <div className='d-flex flex-column'>
                 <span style={{fontSize:'min(8vw,14px)'}}>{notif.subject}</span>

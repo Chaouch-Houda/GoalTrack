@@ -113,7 +113,7 @@ const Login = (props) =>{
                                 <span>Forgot Password </span>
                             </div>
                         </div>
-                        <Button type="submit" className='btn-form-signup'>Log in</Button>
+                        <Button type="submit" className='btn-form-signup'><NavLink to='/connected' className='text-decoration-none text-white' >Log in</NavLink></Button>
                     </Form>
                     
                     <div className='d-flex justify-content-center align-items-center gap-1 m-3'>

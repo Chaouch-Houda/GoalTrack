@@ -16,16 +16,21 @@ import Profile from './Components/profile/Profile';
 import { FavoritesProvider } from './Components/favorites/FavoritesContext';
 import Login from './Components/login/Login';
 import Signup from './Components/signup/Signup';
+import Favorites from './Components/favorites/Favorites';
+import { HistoryProvider } from './Components/history/HistoryContext';
+import { DownloadsProvider } from './Components/history/DownloadsContext';
+import { ProfileProvider } from './Components/profile/ProfileContext';
 
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <SignupProvider>
-          <LoginProvider> */}
-            <SidebarProvider>
-              <FavoritesProvider>
+        <SidebarProvider>
+        <FavoritesProvider>
+        <HistoryProvider>
+        <DownloadsProvider>
+        <ProfileProvider>
                 <Routes>
                   <Route path='/' element={<LandingPage/>}>
                     <Route path='signup' element={<Signup/>}/>
@@ -36,6 +41,7 @@ function App() {
                     <Route path='dashboard' element={<Dashboard/>}/>
                     <Route path='profile' element={<Profile/>}/>
                     <Route path='history'element={<History/>}/>
+                    <Route path='favorites'element={<Favorites/>}/>
                     <Route path='allNotifications'element={<AllNotifications/>}/>
                     <Route path='accountSettings'element={<AccountSettings/>}/>
                     <Route path='privacySettings' element={<PrivacySettings/>}/>
@@ -43,10 +49,11 @@ function App() {
                   </Route>
                   <Route path='*' element={<h1 style={{color:'white'}}>page not found</h1>}/>
                 </Routes>
-              </FavoritesProvider>
-            </SidebarProvider>
-          {/* </LoginProvider>
-        </SignupProvider> */}
+        </ProfileProvider>
+        </DownloadsProvider>
+        </HistoryProvider>
+        </FavoritesProvider>
+        </SidebarProvider>
       </BrowserRouter>
       
       

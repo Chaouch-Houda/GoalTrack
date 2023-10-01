@@ -109,7 +109,7 @@ const isPasswordValid = password === hashedPassword;
 
 async function comparePassword(password, hashed) {
   try {
-    const result = bcrypt.compare(password, hashed);
+    const result =await bcrypt.compare(password, hashed);
     return result;
   } catch (error) {
     console.error("Error while comparing passwords", error);

@@ -1,7 +1,7 @@
 .matchs{
-    width: 96%;
+    /* width: 96%; */
     /* background-color: rgba(0,0,0,0.5); */
-    background-color: rgba(17, 35, 57, 0.9);
+    /* background-color: rgba(17, 35, 57, 0.9); */
     box-shadow: 0 0 3px white;
 
 }
@@ -10,9 +10,10 @@
     background-color: var(--bg-color);
     /* box-shadow: 0 0 1px white; */
     border: 0.1px solid gray;
-    max-width: 370px;
+    max-width: 380px;
     /* height: 400px !important; */
-    min-height: 675px ;
+    /* min-height: 675px ; */
+    min-height: 700px;
     overflow: hidden;
 }
 
@@ -38,12 +39,12 @@
     /* color: var(--green); */
 } 
 
-.video-container{
+.match-video-container{
     max-width: 100% ;
     max-height: 200px;
     overflow: hidden;
 }
-.video-container:hover video{
+.match-video-container:hover video{
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
     cursor: pointer;

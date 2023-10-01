@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import {matchData} from '../../componentsData/matchData'
 import {BiShareAlt,BiLink} from 'react-icons/bi'
-import {DownloadSimple, Heart, Link} from 'phosphor-react'
-import { Button,Table } from 'react-bootstrap'
+import {CaretDoubleRight, DownloadSimple, Heart, Link} from 'phosphor-react'
+import { Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import './MatchSlider.css'
 import Slider from 'react-slick'
@@ -10,7 +10,7 @@ import {ArrowRight} from 'phosphor-react';
 import { FavoritesContext } from '../favorites/FavoritesContext'
 import { renderStats } from '../history/History'
 
-const Match = () => {
+const MatchSlider = () => {
     const {favorites,handleFavorites} = useContext(FavoritesContext);
     const NextArrow = (props) => {
       return <div onClick={props.onClick}><ArrowRight style={{position:'absolute',top:'50%',right:'-20px'}}/></div>;
@@ -44,14 +44,15 @@ const Match = () => {
 
     
   return (
-    <div className='matchs d-flex flex-column justify-content-center align-items-center my-5 pb-2'>
+    <div className='matchs w-100 d-flex flex-column justify-content-center align-items-center my-5 pb-2'>
       <div className='p-1 mx-3' style={{maxWidth:'950px',width:'90%'}}>
         <div className='w-100 d-flex justify-content-between p-2 '>
         <h6 style={{color:'var(--green)',textShadow:'0 0 1px black'}}>Videos Covered Previously</h6>
         <button className='see-btn'>
           <NavLink to='/connected/history' className='text-white text-decoration-none text-nowrap'>
-            See All
+            Show All
             <ArrowRight color='var(--green)' size='min(22px,6vw)' weight='bold'/>
+            {/* <CaretDoubleRight color='var(--green)' size='min(18px,6vw)' weight='bold'/> */}
            </NavLink>
         </button>
       </div>
@@ -69,7 +70,7 @@ const Match = () => {
                     </span>
                   </div>
                   <span >{match.matchdate}</span>
-                  <div className='video-container'>
+                  <div className='match-video-container'>
                     <video src={match.matchVideo.src} controls style={{minHeight:'100%',minWidth:'100%'}}></video>
                   </div>
                   {renderStats(match.generalStats,'General')}
@@ -97,10 +98,12 @@ const Match = () => {
                 </div>
                 <div>
                   <div className='d-flex w-100 justify-content-center'>
-                        <Button className='green-btn' style={{width:'fit-content'}}><NavLink to='/connected/history' className='text-decoration-none text-white' style={{fontSize:'min(13px,6vw)'}}>see more statistics</NavLink></Button>
+                        <Button className='green-btn' style={{width:'fit-content'}}>
+                          <NavLink to={`/connected/history#match1`} className='text-decoration-none text-white' style={{fontSize:'min(13px,6vw)'}}>see more statistics</NavLink>
+                        </Button>
                   </div>
                   <div className='d-flex justify-content-end gap-1 mt-1'>
-                  {favorites.includes(index) ? <Heart size={22} color="#ec0909" cursor='pointer' weight="fill" onClick={()=>handleFavorites(index)}/> : <Heart size={22} color="#f7f7f7" cursor='pointer' onClick={()=>handleFavorites(index)}/>}
+                  {favorites.includes(match.id) ? <Heart size={22} color="#ec0909" cursor='pointer' weight="fill" onClick={()=>handleFavorites(match.id)}/> : <Heart size={22} color="#f7f7f7" cursor='pointer' onClick={()=>handleFavorites(match.id)}/>}
                   <DownloadSimple size={22} color="#f7f7f7" cursor='pointer'/>
                   <Link size={22} color="#f7f7f7" cursor='pointer'/>
                   </div>
@@ -114,4 +117,4 @@ const Match = () => {
   )
 }
 
-export default Match
+export default MatchSlider;
