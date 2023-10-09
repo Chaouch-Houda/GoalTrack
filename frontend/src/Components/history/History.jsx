@@ -114,7 +114,7 @@ const History = () => {
     // le gestionnaire d'événements mousedown au document (qui est ajouté via document.addEventListener) détecte les clics en dehors du bouton et du div grâce à la fonction handleClickOutside
     //Cette fonction sera exécutée chaque fois qu'un événement mousedown se produit sur le document
     function handleClickOutside(event) {
-      if (deleteHistoryRef.current && !deleteHistoryRef.current.contains(event.target) && !btnDeleteHistoryRef.current !== event.target) {
+      if (deleteHistoryRef.current && btnDeleteHistoryRef.current && !deleteHistoryRef.current.contains(event.target) && !btnDeleteHistoryRef.current.contains(event.target)) {
         setShowDelete(false);
         // divRef.current: Vérifie si la référence divRef existe.
         // !divRef.current.contains(event.target) Vérifie si l'élément n'est pas enfant du div.

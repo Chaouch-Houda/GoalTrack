@@ -44,7 +44,7 @@ const MatchSlider = () => {
 
     
   return (
-    <div className='matchs w-100 d-flex flex-column justify-content-center align-items-center my-5 pb-2'>
+    <div className='matchs w-100 d-flex flex-column justify-content-center align-items-center my-5 pb-2 px-2'>
       <div className='p-1 mx-3' style={{maxWidth:'950px',width:'90%'}}>
         <div className='w-100 d-flex justify-content-between p-2 '>
         <h6 style={{color:'var(--green)',textShadow:'0 0 1px black'}}>Videos Covered Previously</h6>

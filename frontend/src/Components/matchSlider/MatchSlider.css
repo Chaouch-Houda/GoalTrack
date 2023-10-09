@@ -3,6 +3,8 @@
     /* background-color: rgba(0,0,0,0.5); */
     /* background-color: rgba(17, 35, 57, 0.9); */
     box-shadow: 0 0 3px white;
+    max-width:96%;
+
 
 }
 .match{

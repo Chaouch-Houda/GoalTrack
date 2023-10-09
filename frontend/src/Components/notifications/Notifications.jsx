@@ -44,7 +44,7 @@
 // }
 
 // export default Notifications;
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../signup/Signup.css'; // on n'est pas obligé de l'importer mais juste pour comprendre qu'on va utiliser des public classes from Signup.css :custom-overlay
 import {IoMdClose} from 'react-icons/io'
 import {TbSettings} from "react-icons/tb";
@@ -55,7 +55,7 @@ import { NavLink } from 'react-router-dom';
 import {sidebarContext} from '../sidebar/sidebarContext';
 
 
-const Notifications = ({setShowNotifications,toggleNotifications}) => {
+const Notifications = ({setShowNotifications,toggleNotifications,notifRef}) => {
   // const {toggleNotifications} = props;
   const [notifications, setNotifications] = useState(notifArray);
   const deleteNotification = (index) => {
@@ -65,25 +65,6 @@ const Notifications = ({setShowNotifications,toggleNotifications}) => {
   };
 const {open} = useContext(sidebarContext);
 
-// on veut que notifications se cachent lorsque on clique en dehors de notifications div
-const notifRef = useRef(null);
-useEffect(() => {
-  // le gestionnaire d'événements mousedown au document (qui est ajouté via document.addEventListener) détecte les clics en dehors du notifications div grâce à la fonction handleClickOutside
-    //Cette fonction sera exécutée chaque fois qu'un événement mousedown se produit sur le document
-    function handleClickOutside(event) {
-    if (notifRef.current && !notifRef.current.contains(event.target)) {
-      setShowNotifications(false);
-      // notifRef.current: Vérifie si la référence notifRef existe.
-      // !notifRef.current.contains(event.target) Vérifie si l'élément n'est pas enfant du div.   
-    }
-  }
-  document.addEventListener('mousedown', handleClickOutside);
-  return () => {
-    //La fonction retournée par useEffect est utilisée pour nettoyer l'écouteur d'événements lors du démontage du composant. Cela garantit qu'il n'y a pas de fuites de mémoire ou d'écouteurs d'événements inutiles après que le composant a été retiré du DOM.
-    document.removeEventListener('mousedown', handleClickOutside);
-  };
-}, []);
-
   return (
     <div className={`notifications-list ${open ? 'mOpen-notif' : 'mClosed-notif'}`} ref={notifRef}>
       {/* <button className='bg-transparent p-0 m-0'><IoMdClose size={20}/></button> */}
@@ -92,8 +73,8 @@ useEffect(() => {
         <h2>Notifications</h2>
         <button className='bg-transparent p-0' onClick={()=>toggleNotifications()}><IoMdClose size={32}/></button>
       </div>
-      <div className='w-100 p-1 pb-0 d-flex  justify-content-between align-itels-center' >
-        <NavLink to='allNotifications' style={{color:'var(--green)'}}><h6>show all</h6></NavLink>
+      <div className='w-100 p-2 pb-0 d-flex  justify-content-between align-itels-center' >
+        <NavLink to='allNotifications' style={{color:'#52c807',textDecoration:'none'}}><h6>show all</h6></NavLink>
       </div>
       <div className='w-100 p-1'>
         {notifications.map((notif)=>(

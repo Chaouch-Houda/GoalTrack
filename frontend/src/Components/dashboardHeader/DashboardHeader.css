@@ -1,0 +1,58 @@
+.search-video{
+    width: min(80vw,350px);
+  }
+  
+  .search-video>svg {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .search-video input{
+    padding-left: 50px;
+  }
+  
+  @media (width<576px){
+  .avatar-container{
+    width: 100% !important;
+    padding: 0.5rem;
+    margin-left: 1em;
+  }
+  }
+
+.avatar{
+  background-image: url(../../assets/images/user5.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor:pointer; 
+}
+
+.avatar-menu{
+  border-radius: 5px;
+  top: 110% ;
+  z-index: 10;
+}
+
+.avatar-menu>ul{
+  font-size: 11px;
+  list-style: none;
+}
+
+.avatar-menu>ul>li{
+  border-bottom: 1px gray solid;
+  padding: 0.6rem 0.5rem !important;
+  cursor: pointer;
+}
+
+/* .avatar-menu>ul>li:hover{
+  background-color: #388d03cc !important;
+} */
+
+.avatar-menu a{
+  color: var(--bg-color) !important;
+  font-weight: 500;
+} 
