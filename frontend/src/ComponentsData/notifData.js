@@ -1,4 +1,4 @@
-import img1 from "../assets/images/pen-duotone.svg";
+import img1 from "../assets/images/t.jpg";
 import img2 from "../assets/images/chart-bar-duotone.svg";
 import img3 from "../assets/images/video-duotone.svg";
 import img4 from '../assets/images/new0.jpg'
@@ -6,7 +6,7 @@ import img5 from "../assets/images/video-duotone(1).svg";
 import img6 from "../assets/images/background1.jpg";
 import img7 from "../assets/images/chart-bar-duotone(1).svg";
 import img8 from "../assets/images/user3.jpg";
-import img9 from "../assets/images/lock-duotone(1).svg";
+import img9 from "../assets/images/gift.jpg";
 import img10 from "../assets/images/basketball_players.jpg";
 import img11 from "../assets/images/user1.jpg";
 import img12 from "../assets/images/football1.jpg";

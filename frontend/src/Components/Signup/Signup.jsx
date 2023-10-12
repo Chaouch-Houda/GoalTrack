@@ -1,21 +1,36 @@
  import React, {useState } from 'react'
-import {X,InstagramLogo,FacebookLogo,LinkedinLogo,GoogleLogo,Eye,EyeSlash, User, Lock } from 'phosphor-react'
+import {X,InstagramLogo,FacebookLogo,LinkedinLogo,GoogleLogo,Eye,EyeSlash, User, Lock,EnvelopeSimple } from 'phosphor-react'
 import { Form, Button} from "react-bootstrap";
 import "./Signup.css";
-import { Link, NavLink } from 'react-router-dom';
-import {useForm,Controller} from "react-hook-form"
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import axios from "axios"
 import RenderInput from './RenderInput';
-
-const Signup = () => {
+import {useForm,Controller} from "react-hook-form"
+//useForm : simplicité : encapsule toute la logique complexe de gestion des formulaires dans un seul hook
+//          gestion de l'état et des valeurs : gère automatiquement l'état des champs de formulaire, y compris leur valeur actuelle. Il suit également l'état de validation du formulaire, ce qui facilite la détection et la gestion des erreurs de validation.
+//          validation facilité : Il fournit un mécanisme robuste et flexible pour la validation des champs de formulaire. Vous pouvez définir des règles de validation telles que la nécessité, le formatage, les longueurs minimales/maximales, etc.
+//          Optimisation des Rendus : react-hook-form est conçu pour minimiser les rendus inutiles et les mises à jour du DOM, ce qui peut améliorer les performances de votre application.
+//          Intégration avec les Composants Contrôlés(input, select, textarea, etc.)
+//          Collecte Facilitée de Données
+//          Personnalisation des Erreurs
+// Controller :
+    // il enveloppe un composant de formulaire standard (comme input, select, textarea, etc.)
+    //Controller se connecte avec le système de gestion de formulaire de react-hook-form, permettant ainsi d'effectuer des validations, de gérer les erreurs et de collecter les données du formulaire.
+    //Chaque champ que vous souhaitez inclure dans data doit être correctement enregistré avec Controller parce que Controller est un composant fourni par react-hook-form qui permet de lier un champ de formulaire à l'état géré par useForm.
+    //il est important de s'assurer que le name attribué à chaque champ du formulaire correspond au nom de la propriété que vous attendez dans l'objet data lors de la soumission du formulaire.
+    //value et defaultValue : Si vous utilisez value ou defaultValue sur un champ de formulaire, assurez-vous que ces valeurs sont correctement initialisées. 
+    //defaultValue : doit être utilisé pour les champs non contrôlés 
+    //et value : pour les champs contrôlés.
+    const Signup = () => {
    // State variable to track password visibility
    const [showPassword, setShowPassword] = useState(false); 
 
    //Vérifier si l'email existe déjà dans la BDD
-   const checkEmailExists = async(email)=>{
+   const checkEmailExists = async (email)=>{
         try{
-            const res = await axios.get(`http://localhost:3100/emails?email=${email}`);
-            return res.data;
+            const res = await axios.get(`http://localhost:3100/checkEmail?email=${email}`);
+            console.log(res.data.emailExists)
+            return res.data.emailExists;
         }catch (error) {
             console.error("Error while checking the existence of the email in the DB :", error);
             return false;
@@ -23,17 +38,23 @@ const Signup = () => {
     };
 
     const { control, handleSubmit, formState: { errors } } = useForm({mode: "onChange"}); // use mode to specify the event that triggers each input field 
+    const navigate = useNavigate();
     //Submitting action
-    const onSubmit = async (data) => {
+    const handleSignup = async (data) => {
         try {
           // Effectuer la requête POST vers le serveur avec Axios
           const response = await axios.post("http://localhost:3100/signup", data);
           console.log(response.data);
+          navigate('/login')
         } catch (error) {
           console.error("Error registering user :", error);
         }
       };
 
+    // const onSubmit = (data) =>{
+    //     console.log(data);
+
+    // }
     return (
         <div className='custom-overlay d-flex justify-content-center align-items-center p-3'>
             <div className='signup-container'>
@@ -43,42 +64,63 @@ const Signup = () => {
                 <div className=' text-white text-center'>
                         <h1 className='fs-1 font1 text-light'>sign up</h1>
                         <span className='fs-6'>Welcome to GoalTrack</span>
-                        <Form onSubmit={handleSubmit(onSubmit)} className='form-signup'>
+                        
+                        <Form onSubmit={handleSubmit(handleSignup)} className='form-signup'>
                             <div className='input-signup'>
                                 <span><User/></span>
-                                <RenderInput name="name" label="" type="text" placeholder= "Name" inputClasses='input-ls' control={control} errors={errors} 
+                                <RenderInput name="firstName" label="" type="text" placeholder= "First Name" defaultValue="" inputClasses='input-ls' control={control} errors={errors} 
                                     rules={{
                                         required: 'This field is required',
                                         maxLength: {
                                             value: 20, // Longueur maximale de 20 caractères
-                                            message: 'the maximum length of name is 20 characters',
+                                            message: 'the maximum length of first name is 20 characters',
                                         },
                                         pattern: {
                                         value: /^[A-Za-z]+$/,
-                                        message: 'Name invalide',
+                                        message:'First name invalide',
                                         },
                                     }}
                                 />
                             </div>
                             <div className='input-signup'>
                                 <span><User/></span>
-                                <RenderInput name="email" label="" type="email" placeholder= "Email" inputClasses='input-ls' control={control} errors={errors} 
+                                <RenderInput name="lastName" label="" type="text" placeholder= "Last Name" defaultValue="" inputClasses='input-ls' control={control} errors={errors} 
+                                    rules={{
+                                        required: 'This field is required',
+                                        maxLength: {
+                                            value: 20, // Longueur maximale de 20 caractères
+                                            message: 'the maximum length of last name is 20 characters',
+                                        },
+                                        pattern: {
+                                        value: /^[A-Za-z]+$/,
+                                        message: 'First name invalide',
+                                        },
+                                    }}
+                                />
+                            </div>
+                            <div className='input-signup'>
+                                <span><EnvelopeSimple/></span>
+                                <RenderInput name="email" label="" type="email" placeholder= "Email" defaultValue="" inputClasses='input-ls' control={control} errors={errors} 
                                     rules={{
                                     required: 'This field is required',
                                     pattern: {
                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                         message: 'Adresse e-mail invalide',
                                     },
-                                    validate: {
-                                        emailAvailable: async (value) => await checkEmailExists(value) || "This email already exists.",
-                                    },
+                                    validate: async (value) => {
+                                        const emailExists = await checkEmailExists(value);
+                                        if (emailExists) {
+                                          return 'This email already exists.';
+                                        }
+                                        return true;
+                                      },
                                     }}
                                 />
                             </div>
                             
                             <div className='input-signup'>  
                                 <span><Lock/></span>
-                                <RenderInput name="password" label="" type={showPassword? "text": "password"} placeholder= "Password" inputClasses='input-ls' control={control} errors={errors} 
+                                <RenderInput name="password" label="" type={showPassword? "text": "password"} defaultValue="" placeholder= "Password" inputClasses='input-ls' control={control} errors={errors} 
                                     rules={{
                                         required: 'This field is required',
                                         minLength: {
@@ -113,6 +155,7 @@ const Signup = () => {
                             </div> */}
                             
                             {/* Add the checkbox field */}
+
                             <Controller
                             name="terms"
                             control={control}

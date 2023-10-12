@@ -1,3 +1,23 @@
+.upload-profile-img{
+    height:min(150px,35vw);
+    width:min(150px,35vw);
+    max-width: 150px !important;
+    max-height: 150px !important;
+    border-radius: 50% !important;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color:gray;
+}
+
+.profile-img-label{
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: min(6vw,14px);
+}
+
 .accountSettings{
     /* background-color: #090c091a; */
     /* background-color: #ffffff24; */

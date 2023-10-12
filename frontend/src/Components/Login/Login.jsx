@@ -5,53 +5,25 @@ import "../signup/Signup.css";
 import { useForm } from 'react-hook-form';
 import RenderInput from '../signup/RenderInput';
 import axios from 'axios';
-import { Link, NavLink} from 'react-router-dom';
+import { Link, NavLink,useNavigate} from 'react-router-dom';
+
 
 const Login = (props) =>{
     // State variable to track password visibility
    const [showPassword, setShowPassword] = useState(false); 
 
-   //Vérifier si l'email existe déjà dans la BDD
-//    const checkUserExists = async(data)=>{
-//         try{
-//         const res = await axios.post(`http://localhost:3100/login`,data);
-//         console.log("authenticated:"+res.data.authenticated);
-//         return res.data.authenticated;
-//         }catch (error) {
-//             console.error("Error while checking the existence of the user in the DB:", error);
-//             return false;
-//         }
-//     };
-    // const navigate = useNavigate();
     const { control, handleSubmit, formState: { errors } } = useForm({ mode: "onChange"}); 
-    const OnSubmit = async (data) => {
+   
+    const navigate = useNavigate();
+    const handleLogin = async (data) => {
         try {
-            const response = await axios.post(`http://localhost:3100/login`, data);
-            if (response.data.authenticated===true) {
-                console.log("connection successful !");
-                // navigate('/');
-                props.history.push('/');
-            }
-            else {
-            console.log("connection failed !");
-            }
-            console.log(response.data.authenticated);
-            }catch (error) {
-            console.error(error);
+            const response = await axios.post("http://localhost:3100/login", data);
+            console.log(response.data);
+            // Si l'authentification réussit, rediriger vers la route /connected
+            navigate('/connected')
+            }catch (err) {
+            console.error(err);
           }
-            
-            // try {
-            //   const res = await axios.post("http://localhost:3100/login", data);
-            //   if (res.data.authenticated) {
-            //     // L'utilisateur est authentifié avec succès
-            //     console.log("Login successful!");
-            //   } else {
-            //     // L'utilisateur n'existe pas dans la base de données ou le mot de passe est incorrect
-            //     console.log("Invalid email or password");
-            //   }
-            // } catch (error) {
-            //   console.error("Error while checking the existence of the user in the DB:", error);
-            // }
           };
  
   return (
@@ -63,10 +35,10 @@ const Login = (props) =>{
             <div className=' text-white text-center'>
                     <h1 className='fs-1 font1 text-light'>log in</h1>
                     <span className='fs-6'>Welcome Back!</span>
-                    <Form onSubmit={handleSubmit(OnSubmit)} className='form-signup'>
+                    <Form onSubmit={handleSubmit(handleLogin)} className='form-signup'>
                         <div className='input-signup'>
                             <span><User/></span>
-                            <RenderInput name="email" label="" type="email" placeholder= "Email" inputClasses='input-ls' control={control} errors={errors} 
+                            <RenderInput name="email" label="" type="email" placeholder= "Email" defaultValue="" inputClasses='input-ls' control={control} errors={errors} 
                                 rules={{
                                 required: 'This field is required',
                                 pattern: {
@@ -79,7 +51,7 @@ const Login = (props) =>{
                         
                         <div className='input-signup'>  
                             <span><Lock/></span>
-                            <RenderInput name="password" label="" type={showPassword? "text": "password"}  placeholder= "Password" inputClasses='input-ls' control={control} errors={errors} 
+                            <RenderInput name="password" label="" type={showPassword? "text": "password"}  placeholder= "Password" defaultValue="" inputClasses='input-ls' control={control} errors={errors} 
                                 rules={{
                                     required: 'This field is required',
                                     minLength: {
@@ -113,7 +85,7 @@ const Login = (props) =>{
                                 <span>Forgot Password </span>
                             </div>
                         </div>
-                        <Button type="submit" className='btn-form-signup'><NavLink to='/connected' className='text-decoration-none text-white' >Log in</NavLink></Button>
+                        <Button type="submit" className='btn-form-signup'>Log in</Button>
                     </Form>
                     
                     <div className='d-flex justify-content-center align-items-center gap-1 m-3'>

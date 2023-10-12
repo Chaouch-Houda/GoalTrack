@@ -20,6 +20,7 @@ import Favorites from './Components/favorites/Favorites';
 import { HistoryProvider } from './Components/history/HistoryContext';
 import { DownloadsProvider } from './Components/history/DownloadsContext';
 import { ProfileProvider } from './Components/profile/ProfileContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
                     <Route path='history'element={<History/>}/>
                     <Route path='favorites'element={<Favorites/>}/>
                     <Route path='allNotifications'element={<AllNotifications/>}/>
-                    <Route path='accountSettings'element={<AccountSettings/>}/>
+                    {/* <Route path='accountSettings'element={<AccountSettings/>}/> */}
                     <Route path='privacySettings' element={<PrivacySettings/>}/>
                     <Route path='notificationsSettings' element={<NotificationsSettings/>}/>
                   </Route>

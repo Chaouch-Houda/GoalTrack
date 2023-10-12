@@ -22,10 +22,10 @@ const Profile = () => {
                 <h6>Free</h6>
             </div>
             <div className='w-100 d-flex flex-column gap-2 ' style={{maxWidth:'280px'}}>
-                <div>
+                {/* <div>
                     <span>Username</span>
                     <div className='info-p'><span>Houda_Ch</span></div>
-                </div>
+                </div> */}
                 <div>
                     <span>First name</span>
                     <div className='info-p'><span>Houda</span></div>

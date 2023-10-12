@@ -143,7 +143,7 @@ const UploadFile = () => {
                   <Form.Control type="text" placeholder='Paste a video URL https://www.youtube.com/watch?v=abcdef12345' style={{width:'90%',maxWidth:'500px',backgroundColor:'rgba(255,255,255,0.8)',fontSize:'min(6vw,14px)'}}/>
                   <div className='text-center'><span>or</span></div> 
                   <Form.Group controlId="formFile" className="d-flex flex-column">
-                    <Form.Label className="custom-file-upload d-flex flex-column justify-content-center align-items-center" style={{fontSize:'min(6vw,14px)'}}>
+                    <Form.Label className="custom-file-upload d-flex flex-column justify-content-center align-items-center">
                       <BsCloudUpload size='min(60px,20vw)' color='var(--green)' className='upload-animate-icon'/>
                       <div className='d-flex flex-column justify-content-center align-items-center gap-1'>
                         <span className='text-white'>Drag & drop to upload</span>

@@ -81,7 +81,7 @@ const {open} = useContext(sidebarContext);
           <div key={notif.id} className={`d-flex justify-content-between px-1 py-2`}>
             <div className='d-flex gap-2'>
               <div>
-                <img src={notif.image} alt="img" style={{width:'35px',height:'35px',borderRadius:'50%'}}/>
+                <img src={notif.image} className='notif-img' alt="img"/>
               </div>
               <div className='d-flex flex-column'>
                 <span style={{fontSize:'min(8vw,14px)'}}>{notif.subject}</span>
