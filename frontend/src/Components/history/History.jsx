@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './History.css'
 import { Button} from 'react-bootstrap'
-import {NavLink } from 'react-router-dom'
-import { DownloadSimple, Heart, Link ,ArrowDown,ArrowUp, CaretDoubleDown, ArrowFatDown, ArrowFatLineDown, ArrowFatLinesDown} from 'phosphor-react'
+import { DownloadSimple, Heart, Link ,ArrowDown,ArrowUp} from 'phosphor-react'
 import { matchData } from '../../componentsData/matchData'
 import  {FavoritesContext} from '../favorites/FavoritesContext'
 import ReactApexChart from 'react-apexcharts'
@@ -131,7 +130,7 @@ const History = () => {
   }, []);
   
   // const [chartOptions, setChartOptions] = useState({
-  //   chart: {
+  //   chart: {w
   //     type: 'donut',
   //   },
   //   labels: ['Équipe 1', 'Équipe 2'],

@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useContext, useEffect, useState } from 'react';
 import {X,InstagramLogo,FacebookLogo,LinkedinLogo,GoogleLogo, User, Lock, Eye, EyeSlash} from 'phosphor-react';
 import {Button,Form} from "react-bootstrap";
 import "../signup/Signup.css";
@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import RenderInput from '../signup/RenderInput';
 import axios from 'axios';
 import { Link, NavLink,useNavigate} from 'react-router-dom';
-
+import { AuthContext } from '../../pages/userDashboard/AuthContext';
 
 const Login = (props) =>{
     // State variable to track password visibility
@@ -14,18 +14,37 @@ const Login = (props) =>{
 
     const { control, handleSubmit, formState: { errors } } = useForm({ mode: "onChange"}); 
    
+    // axios.defaults.withCredentials = true ;
     const navigate = useNavigate();
+    const {setUser,user} = useContext(AuthContext);
+
     const handleLogin = async (data) => {
         try {
             const response = await axios.post("http://localhost:3100/login", data);
-            console.log(response.data);
+            // console.log(response.data);
             // Si l'authentification réussit, rediriger vers la route /connected
-            navigate('/connected')
-            }catch (err) {
+            if (response.status === 200)
+            {   navigate('/connected');
+                // const token = response.data.token;
+                // localStorage.setItem('token', token);
+                // localStorage.setItem('user',response.data.userData)
+                // put the user data in the status user
+
+                // Stocker le token dans localStorage
+                localStorage.setItem('token', response.data.token);
+                // Stocker les informations de l'utilisateur dans localStorage
+                localStorage.setItem('userData', JSON.stringify(response.data.userData));
+                const savedUserData = JSON.parse(await localStorage.getItem('userData'));
+                setUser(savedUserData); //sinon user=null
+            } 
+        }catch (err) {
             console.error(err);
-          }
-          };
- 
+            alert("Check your informations, email or password is incorrect !")
+        }
+    };
+  useEffect(()=>{
+    console.log('user:'+ user);
+  },[user])
   return (
     <div className="custom-overlay d-flex justify-content-center align-items-center p-3">
         <div className='signup-container'>
@@ -66,8 +85,12 @@ const Login = (props) =>{
                                         value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
                                         message: 'Password must contain : lowercase letter(s), uppercase letter(s),digit(s) and special character(s)',
                                     },
-                                    // validate: {
-                                    //     Available: ({email,password}) => checkUserExists({email,password}) || "The password or the password you entered is incorrect. Please try again or Reset your password",
+                                    // validate: async (value) => {
+                                    //     const emailExists = await checkEmailExists(value);
+                                    //     if (!emailExists) {
+                                    //       return "Check your informations!";
+                                    //     }
+                                    //     // return true;
                                     //   },
                                 }}
                                 />

@@ -6,36 +6,39 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import axios from "axios"
 import RenderInput from './RenderInput';
 import {useForm,Controller} from "react-hook-form"
-//useForm : simplicité : encapsule toute la logique complexe de gestion des formulaires dans un seul hook
-//          gestion de l'état et des valeurs : gère automatiquement l'état des champs de formulaire, y compris leur valeur actuelle. Il suit également l'état de validation du formulaire, ce qui facilite la détection et la gestion des erreurs de validation.
-//          validation facilité : Il fournit un mécanisme robuste et flexible pour la validation des champs de formulaire. Vous pouvez définir des règles de validation telles que la nécessité, le formatage, les longueurs minimales/maximales, etc.
-//          Optimisation des Rendus : react-hook-form est conçu pour minimiser les rendus inutiles et les mises à jour du DOM, ce qui peut améliorer les performances de votre application.
-//          Intégration avec les Composants Contrôlés(input, select, textarea, etc.)
-//          Collecte Facilitée de Données
-//          Personnalisation des Erreurs
-// Controller :
-    // il enveloppe un composant de formulaire standard (comme input, select, textarea, etc.)
-    //Controller se connecte avec le système de gestion de formulaire de react-hook-form, permettant ainsi d'effectuer des validations, de gérer les erreurs et de collecter les données du formulaire.
-    //Chaque champ que vous souhaitez inclure dans data doit être correctement enregistré avec Controller parce que Controller est un composant fourni par react-hook-form qui permet de lier un champ de formulaire à l'état géré par useForm.
-    //il est important de s'assurer que le name attribué à chaque champ du formulaire correspond au nom de la propriété que vous attendez dans l'objet data lors de la soumission du formulaire.
-    //value et defaultValue : Si vous utilisez value ou defaultValue sur un champ de formulaire, assurez-vous que ces valeurs sont correctement initialisées. 
-    //defaultValue : doit être utilisé pour les champs non contrôlés 
-    //et value : pour les champs contrôlés.
-    const Signup = () => {
-   // State variable to track password visibility
-   const [showPassword, setShowPassword] = useState(false); 
+/*useForm : simplicité : encapsule toute la logique complexe de gestion des formulaires dans un seul hook
+         gestion de l'état et des valeurs : gère automatiquement l'état des champs de formulaire, y compris leur valeur actuelle. Il suit également l'état de validation du formulaire, ce qui facilite la détection et la gestion des erreurs de validation.
+         validation facilité : Il fournit un mécanisme robuste et flexible pour la validation des champs de formulaire. Vous pouvez définir des règles de validation telles que la nécessité, le formatage, les longueurs minimales/maximales, etc.
+         Optimisation des Rendus : react-hook-form est conçu pour minimiser les rendus inutiles et les mises à jour du DOM, ce qui peut améliorer les performances de votre application.
+         Intégration avec les Composants Contrôlés(input, select, textarea, etc.)
+         Collecte Facilitée de Données
+         Personnalisation des Erreurs
+*/
+/* Controller :
+    il enveloppe un composant de formulaire standard (comme input, select, textarea, etc.)
+    Controller se connecte avec le système de gestion de formulaire de react-hook-form, permettant ainsi d'effectuer des validations, de gérer les erreurs et de collecter les données du formulaire.
+    Chaque champ que vous souhaitez inclure dans data doit être correctement enregistré avec Controller parce que Controller est un composant fourni par react-hook-form qui permet de lier un champ de formulaire à l'état géré par useForm.
+    il est important de s'assurer que le name attribué à chaque champ du formulaire correspond au nom de la propriété que vous attendez dans l'objet data lors de la soumission du formulaire.
+    value et defaultValue : Si vous utilisez value ou defaultValue sur un champ de formulaire, assurez-vous que ces valeurs sont correctement initialisées. 
+    defaultValue : doit être utilisé pour les champs non contrôlés 
+    et value : pour les champs contrôlés.
+*/   
 
-   //Vérifier si l'email existe déjà dans la BDD
-   const checkEmailExists = async (email)=>{
+    //  Vérifie si l'adresse e-mail existe déjà.   
+    export const  checkEmailExists = async (email)=>{ //  Ce requête ne sera envoyée qu'après avoir d'abord vérifié les règles (syntaxe, etc.), évitant ainsi une surcharge du serveur.
         try{
             const res = await axios.get(`http://localhost:3100/checkEmail?email=${email}`);
-            console.log(res.data.emailExists)
+            // console.log(res.data.emailExists)
             return res.data.emailExists;
         }catch (error) {
             console.error("Error while checking the existence of the email in the DB :", error);
             return false;
         }
-    };
+    }; 
+    
+    const Signup = () => {
+   // State variable to track password visibility
+   const [showPassword, setShowPassword] = useState(false); 
 
     const { control, handleSubmit, formState: { errors } } = useForm({mode: "onChange"}); // use mode to specify the event that triggers each input field 
     const navigate = useNavigate();
@@ -44,17 +47,14 @@ import {useForm,Controller} from "react-hook-form"
         try {
           // Effectuer la requête POST vers le serveur avec Axios
           const response = await axios.post("http://localhost:3100/signup", data);
-          console.log(response.data);
-          navigate('/login')
+        //   console.log(response.data);
+          if(response.status === 201) navigate('/login');
         } catch (error) {
           console.error("Error registering user :", error);
         }
       };
 
-    // const onSubmit = (data) =>{
-    //     console.log(data);
-
-    // }
+    
     return (
         <div className='custom-overlay d-flex justify-content-center align-items-center p-3'>
             <div className='signup-container'>
@@ -65,7 +65,7 @@ import {useForm,Controller} from "react-hook-form"
                         <h1 className='fs-1 font1 text-light'>sign up</h1>
                         <span className='fs-6'>Welcome to GoalTrack</span>
                         
-                        <Form onSubmit={handleSubmit(handleSignup)} className='form-signup'>
+                        <form onSubmit={handleSubmit(handleSignup)} className='form-signup'>
                             <div className='input-signup'>
                                 <span><User/></span>
                                 <RenderInput name="firstName" label="" type="text" placeholder= "First Name" defaultValue="" inputClasses='input-ls' control={control} errors={errors} 
@@ -110,9 +110,9 @@ import {useForm,Controller} from "react-hook-form"
                                     validate: async (value) => {
                                         const emailExists = await checkEmailExists(value);
                                         if (emailExists) {
-                                          return 'This email already exists.';
+                                          return "Try an other email !";
                                         }
-                                        return true;
+                                        // return true;
                                       },
                                     }}
                                 />
@@ -124,7 +124,7 @@ import {useForm,Controller} from "react-hook-form"
                                     rules={{
                                         required: 'This field is required',
                                         minLength: {
-                                            value: 8, // Longueur minimale de 8 caractères
+                                            value: 6, // Longueur minimale de 8 caractères
                                             message: 'Password must be at least 8 characters long',
                                         },
                                         maxLength: {
@@ -217,7 +217,7 @@ import {useForm,Controller} from "react-hook-form"
                             </div> */}
 
                             <Button type="submit" className='btn-form-signup'>Sign Up</Button>
-                        </Form>
+                        </form>
                         
                         <div className='d-flex justify-content-center align-items-center gap-1 m-3'>
                             <div className='empty-div'></div>

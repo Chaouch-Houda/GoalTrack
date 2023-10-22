@@ -21,6 +21,7 @@ import { HistoryProvider } from './Components/history/HistoryContext';
 import { DownloadsProvider } from './Components/history/DownloadsContext';
 import { ProfileProvider } from './Components/profile/ProfileContext';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from './pages/userDashboard/AuthContext';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <HistoryProvider>
         <DownloadsProvider>
         <ProfileProvider>
+        <AuthProvider>
                 <Routes>
                   <Route path='/' element={<LandingPage/>}>
                     <Route path='signup' element={<Signup/>}/>
@@ -44,12 +46,13 @@ function App() {
                     <Route path='history'element={<History/>}/>
                     <Route path='favorites'element={<Favorites/>}/>
                     <Route path='allNotifications'element={<AllNotifications/>}/>
-                    {/* <Route path='accountSettings'element={<AccountSettings/>}/> */}
+                    <Route path='accountSettings'element={<AccountSettings/>}/>
                     <Route path='privacySettings' element={<PrivacySettings/>}/>
                     <Route path='notificationsSettings' element={<NotificationsSettings/>}/>
                   </Route>
                   <Route path='*' element={<h1 style={{color:'white'}}>page not found</h1>}/>
                 </Routes>
+        </AuthProvider>
         </ProfileProvider>
         </DownloadsProvider>
         </HistoryProvider>

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import {List} from "phosphor-react";
 import {NavLink,useLocation } from 'react-router-dom';
-import {BiNews,BiHistory} from "react-icons/bi";
+import {BiHistory} from "react-icons/bi";
 import {MdFavoriteBorder,MdOutlineNotificationsActive,MdOutlinePrivacyTip} from "react-icons/md";
 import {TbSettings,TbLayoutDashboard} from "react-icons/tb";
 import {FiLogOut} from "react-icons/fi";
@@ -10,6 +10,7 @@ import logo from "../../assets/images/logo.png";
 import "./Sidebar.css";
 import Notifications from '../notifications/Notifications';
 import { sidebarContext } from './sidebarContext';
+import { AuthContext } from '../../pages/userDashboard/AuthContext';
 
 const Sidebar = () => {
 //  Pour gérer l'affichage de notif on utilise :
@@ -97,6 +98,8 @@ const Sidebar = () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
     }, []);
+    // use logout to logout and to navigate to home page 
+    const {logout} = useContext(AuthContext);
   return (
     <>
       <nav  className={`Sidebar left-0 text-white ${ xsWidth ? 'w-100' : 'min-vh-100'} `} style={{width: open ? '18rem': '5rem'}}>
@@ -125,7 +128,8 @@ const Sidebar = () => {
                                                             setMenuVisible(false); 
                                                             setOpenSubMenu(null);
                                                           }
-                                                          }}
+                                                         if(menu.label === 'Logout') logout() 
+                                                        }}
                 >
                                                     {/* on veux que l'icon devient green meme si l'un de ces children est actif ${((location.pathname === menu.link || (menu.submenu &&( menu.submenu.map((e,i)=> {return e.link===location.pathname})))) && !open) ? 'actif': location.pathname === menu.link ? 'actif2': ''}  */}
 

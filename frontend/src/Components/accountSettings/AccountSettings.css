@@ -1,22 +1,3 @@
-.upload-profile-img{
-    height:min(150px,35vw);
-    width:min(150px,35vw);
-    max-width: 150px !important;
-    max-height: 150px !important;
-    border-radius: 50% !important;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color:gray;
-}
-
-.profile-img-label{
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    cursor: pointer;
-    white-space: nowrap;
-    font-size: min(6vw,14px);
-}
 
 .accountSettings{
     /* background-color: #090c091a; */
@@ -26,6 +7,8 @@
     max-width: 53rem;
     font-family: var(--ff-one);
     font-size: 15px;
+    text-transform: capitalize !important;
+
 }
 /* .light{
     position: absolute;
@@ -54,7 +37,27 @@
 .block-ac{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:  0.5rem 1rem;
+    gap:  1.5rem 1rem;
+}
+
+.upload-profile-img{
+    height:min(150px,35vw);
+    width:min(150px,35vw);
+    max-width: 150px !important;
+    max-height: 150px !important;
+    border-radius: 50% !important;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color:gray;
+}
+
+.profile-img-label{
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: min(6vw,14px);
 }
 
 .img-ac{
@@ -71,6 +74,7 @@
 .input-ac{
     max-width: 20rem;
     appearance: auto!important ;
+    /* margin-bottom: 0.5em; */
     /* background-color: rgba(246, 255, 246, 0.849) !important; */
 }
 /* .accountSettings input:focus ,

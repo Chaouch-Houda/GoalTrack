@@ -1,9 +1,10 @@
-import React, {useEffect, useRef, useState } from 'react'
+import React, {useContext, useEffect, useRef, useState } from 'react'
 import {Form} from 'react-bootstrap'
 import {CaretDown} from 'phosphor-react';
 import {BiSearchAlt} from 'react-icons/bi'
 import { NavLink } from 'react-router-dom'
 import './DashboardHeader.css'
+import { AuthContext } from '../../pages/userDashboard/AuthContext';
 const DashboardHeader = () => {
     const [searchVideo , setSearchVideo] = useState('');
     const handleSearch = (e) =>{
@@ -31,6 +32,7 @@ const DashboardHeader = () => {
   }, [])
 
   const [avatarMenu,setAvatarMenu] = useState(false);
+  const {user} = useContext(AuthContext);
 
   return (
     <div className='w-100 h-100 d-flex flex-column-reverse flex-sm-row align-items-center justify-content-around mb-2 my-md-3 px-2' style={{maxHeight:'300px'}}>
@@ -47,7 +49,7 @@ const DashboardHeader = () => {
             <div className='avatar-container d-flex align-items-center justify-content-end gap-2 flex-nowrap position-relative'>
               <div className='d-flex align-items-center justify-content-center gap-1 flex-nowrap'>
                 <CaretDown weight='regular' cursor='pointer' onClick={()=>setAvatarMenu(!avatarMenu)} ref={avatarBtnRef}/>
-                <span className='text-nowrap' style={{fontSize:'12px',fontWeight:'400'}}>Houda Chaouch</span>
+                <span className='text-nowrap' style={{fontSize:'12px',fontWeight:'400',textTransform:'capitalize'}}>{user.firstName} {user.lastName}</span>
               </div>
               <div><NavLink to='/connected/profile 'className='h-100 w-100'><div  className='avatar'></div></NavLink></div>
               {avatarMenu && <div className="avatar-menu bg-white d-flex justify-content-center align-items-center position-absolute overflow-hidden" ref={avatarMenuRef}>
