@@ -122,13 +122,14 @@ app.post("/login", loginValidation , (req, res) => {
 
 app.put("/updateData",(req,res)=> {
   // const data = [req.body.firstName,res.body.lastName,res.body.email,res.body.password,res.body.photo,res.body.about,res.body.country,res.body.phone,res.body.birthdate,res.body.gender];
-  // const {userPwd , ...data} = req.body ;
-  const data =req.body;
+  const {password , ...data} = req.body ;
+  console.log(data);
+  // const data =req.body;
   const userEmail = req.body.email;
   const userPwd = req.body.password;
 
   const sql = "SELECT * FROM user WHERE email = ?";
-  db.query(sql, [userEmail], (err, userData) => {
+db.query(sql, [userEmail], (err, userData) => {
     if (err) {
       return res.status(500).json({ error: "Server error (select user in updateData) !" });
     }

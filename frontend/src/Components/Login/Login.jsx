@@ -34,7 +34,7 @@ const Login = (props) =>{
                 localStorage.setItem('token', response.data.token);
                 // Stocker les informations de l'utilisateur dans localStorage
                 localStorage.setItem('userData', JSON.stringify(response.data.userData));
-                const savedUserData = JSON.parse(await localStorage.getItem('userData'));
+                const savedUserData =  JSON.parse( localStorage.getItem('userData'));
                 setUser(savedUserData); //sinon user=null
             } 
         }catch (err) {

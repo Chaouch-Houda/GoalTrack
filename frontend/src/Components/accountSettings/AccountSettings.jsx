@@ -5,9 +5,7 @@ import RenderInput from '../signup/RenderInput';
 import './AccountSettings.css';
 import {Eye, EyeSlash, Image} from 'phosphor-react';
 import { Link } from 'react-router-dom';
-import Select from 'react-select';
 import { countries } from 'countries-list';
-import { ProfileContext } from '../profile/ProfileContext';
 import {ToastContainer, toast} from 'react-toastify'
 import { AuthContext } from '../../pages/userDashboard/AuthContext';
 import axios from 'axios';
@@ -15,10 +13,13 @@ import axios from 'axios';
 const AccountSettings = () => {
 
   //for creating a Country Select Component
-  const countryOptions = Object.keys(countries).map(countryCode => ({
-    value: countryCode,
-    label: countries[countryCode].name,
-  }));
+  // const countryOptions = Object.keys(countries).map(countryCode => 
+  //   ({
+  //   value: countries[countryCode].name,
+  //   label: countries[countryCode].name,
+  // })
+  // );
+  const countryOptions = Object.keys(countries).map(countryCode => countries[countryCode].name);
 
     // const handleGenderChange = (event) => {
     //   setGender(event.target.value);
@@ -68,23 +69,25 @@ const {user,setUser}= useContext(AuthContext);
 
 const onSubmit = async (data) => {
   // const token = localStorage.getItem('token');
-  console.log(data); console.log('user'+ user)
+  console.log(data); 
   // updateFormData({ ...data, photo: imageSrc });// Mettre à jour les données du formulaire dans le contexte
-  toast.success('Your changes have been successfully saved!', {
-    position: 'top-right',
-    autoClose: 3000, // La notification se fermera automatiquement après 3 secondes
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  });
+  
   try{
      const response = await axios.put('http://localhost:3100/updateData', data);
     
       if(response.status === 200) {
-        localStorage.setItem('userData',data);
-        setUser(data);
-
+        localStorage.setItem('userData',JSON.stringify(data));
+        const updatedData = JSON.parse( localStorage.getItem('userData'));
+        setUser(updatedData);
+        toast.success('Your changes have been successfully saved!', {
+            position: 'top-right',
+            autoClose: 3000, // La notification se fermera automatiquement après 3 secondes
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+          console.log('user'+ user)
       }
   }catch{
 
@@ -122,7 +125,6 @@ const onSubmit = async (data) => {
                     </Form.Label>
                     <div className='position-relative w-100 h-100 profile-img-input'>
                       <Form.Control
-                        
                         type="file"
                         accept="image/png, image/jpeg, image/bmp"
                         // required='Photo field is required'
@@ -226,6 +228,7 @@ const onSubmit = async (data) => {
         <Controller
         name="about"
         control={control}
+        defaultValue={user.about}
         render={({ field }) => (
           <Form.Group controlId="message">
             <Form.Label style={{paddingLeft:"0.7rem"}}>About</Form.Label>
@@ -234,10 +237,7 @@ const onSubmit = async (data) => {
               as="textarea"
               name='about'
               rows={3}
-              // value={aboutMsg}
               placeholder='Brief description for your profile'
-              defaultValue={user.about}
-              // onChange={handleAboutMsg}
               style={{maxWidth:'700px'}}
             />
           </Form.Group>
@@ -257,7 +257,13 @@ const onSubmit = async (data) => {
                 <div className='position-relative'>
                   <Form.Group className='input-ac input-country'>
                     <Form.Label className='label'>Country</Form.Label>
-                    <Select options={countryOptions} {...field} className='text-black'/>
+                      <Form.Control as="select" {...field}>
+                        {countryOptions.map((country, index) => (
+                          <option key={index} value={country}>
+                            {country}
+                          </option>
+                        ))}
+                      </Form.Control>
                   </Form.Group>
                   {errors.country &&
                     <Form.Text className="text-danger" style={{position:"absolute",bottom:"-20px",left:"0",textAlign:"start",width:"100%",fontSize:"min(12px,4vw)"}}>
@@ -279,6 +285,10 @@ const onSubmit = async (data) => {
             <RenderInput name="birthdate" label="Birthdate" type="date" placeholder= "" defaultValue={user.birthdate} inputClasses='input-ac' control={control} errors={errors} 
             rules={{
             // required: 'This field is required',
+            // pattern: {
+            //   value: /\d{2}-\d{2}-\d{4}/,
+            //   message: 'Please enter a valid date (JJ-MM-AAAA)'
+            // }
             }}
             />
            
@@ -292,8 +302,10 @@ const onSubmit = async (data) => {
                 className="input-ac"
                 autoComplete="off"
                 data-lpignore="true"
+                defaultValue={user.birthdate}
             />
           </Form.Group> */}
+
           <Controller
             name="gender"
             control={control}
@@ -311,7 +323,7 @@ const onSubmit = async (data) => {
                       label="Male"
                       { ...field }
                       value="male"
-                      // checked={gender === 'male'}
+                      defaultChecked={user.gender === 'male'}
                       // onChange={() => setGender('male')} // Mettez à jour gender ici 
                       className="custom-radio"
                     />
@@ -320,7 +332,7 @@ const onSubmit = async (data) => {
                       label="Female"
                       { ...field }
                       value="female"
-                      // checked={gender === 'female'}
+                      defaultChecked={user.gender === 'female'}
                       // onChange={() => setGender('female')} // Mettez à jour gender ici
                       className="custom-radio"
                     />
