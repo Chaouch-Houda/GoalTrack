@@ -6,22 +6,30 @@ import bcrypt from "bcrypt"
 import db from "./config/db.js";
 import { loginValidation, signupValidation } from "./validation.js";
 import verifyToken from "./middleware/authMiddleware.js";
-
+import path from 'path';
+import multer from 'multer'
 // config({path:'./.env'});
 
 const salt = await bcrypt.genSalt(10); //hashing the password with 10 lettres
 const app = express();
 const port = 3100;
 
+
+const corsOptions = {
+  origin: 'http://localhost:3000', // L'origine du client React
+  credentials: true, // Autoriser les en-têtes d'autorisation
+};
 app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json()); //app.use est un middlewere de json permet de : si on fait post/put ou any request dans le body, il permet de mettre ce body content dans req.body
-  
+app.use('/images', express.static('uploads/images')); // to make the photos from server accessibles   
+
 // Initialisation de votre middleware express-jwt, il doit etre appliqué avant les routes dans le fichier de configuration d'Express. Si le middleware est appliqué après la définition des routes, il se peut qu'il ne soit pas correctement exécuté.
   const jwtMiddleware = jwtMid({
     secret: process.env.SECRET_KEY,
     algorithms: ['HS256']
 
-  }).unless({ path: ['/signup','/login','/checkEmail','/updateData'] }); //Exclusion des routes non authentifiées
+  }).unless({ path: ['/signup','/login','/checkEmail','/updateImage','/updateData','uploads/images'] }); //Exclusion des routes non authentifiées
   // Application de votre middleware express-jwt
   app.use(jwtMiddleware);
   
@@ -50,6 +58,25 @@ app.listen(port, () => {
 
 //créer API
 
+/**********************  Uploading videos  **********************/
+const videoStorage = multer.diskStorage({  // Configuration du stockage des fichiers téléchargés
+  destination: (req, file, cb) => {  // Définition du dossier de destination des fichiers avec la fonction destination
+    cb(null, 'uploads/videos/');           // Dans ce cas, les fichiers seront stockés dans le dossier "uploads/"
+  },
+    //req représente la requête HTTP.
+    //file représente les informations sur le fichier qui est en cours de téléchargement.
+  filename: (req, file, cb) => {     // Définition du nom de fichier
+    const ext = path.extname(file.originalname);  // Récupération de l'extension du fichier original
+    cb(null, `${Date.now()}${ext}`);  // Le fichier sera renommé avec un horodatage unique pour éviter les doublons
+  } //cb(error, destination) : est une fonction de rappel (callback) qui doit être appelée pour indiquer à multer que l'opération s'est terminée.
+    //  Le 1er arg err est utilisé pour indiquer s'il y a eu une err lors de l'opération, et le 2ème arg dest est le chemin où le fichier doit être stocké.
+});
+const uploadVideo = multer({ storage: videoStorage  });  // Création d'une instance de multer avec la configuration de stockage définie précédemment
+app.post('/uploadVideo', uploadVideo.single('file'), (req, res) => {  // Définition d'une route POST à l'URL '/upload'.Le middleware upload.single('file') de Multer est utilisé pour traiter le téléchargement d'un seul fichier à partir d'un champ de formulaire nommé 'file'. Cela signifie qu'il attend un seul fichier à la fois et le traite en conséquence.
+  res.send('Video uploaded successfully');  // Réponse envoyée lorsque le fichier est téléchargé avec succès
+});
+
+/********************** Signup **********************/
 app.post('/signup',signupValidation,async (req,res) => {
     const { firstName,lastName, email, password } = req.body;
     try{
@@ -68,6 +95,7 @@ app.post('/signup',signupValidation,async (req,res) => {
     }
 });
 
+/********************** checkEmail **********************/
 // Route GET pour vérifier si l'e-mail existe déjà dans la base de données 
 app.get("/checkEmail", (req, res) => {
   try{
@@ -86,6 +114,7 @@ app.get("/checkEmail", (req, res) => {
   }
   });
 
+  /********************** login **********************/
 app.post("/login", loginValidation , (req, res) => {
   const { email, password } = req.body;
   const sql = "SELECT * FROM user WHERE email = ?";
@@ -98,7 +127,7 @@ app.post("/login", loginValidation , (req, res) => {
       const isMatch = bcrypt.compareSync(password, hashedPassword);
       if (isMatch) {
         //get user id
-        const id = data[0].id ;
+        const id = data[0].userId ;
         // console.log(data[0])
         //create the token 
         const token = jwt.sign({id},process.env.SECRET_KEY,{expiresIn:'1d'});
@@ -120,11 +149,35 @@ app.post("/login", loginValidation , (req, res) => {
   });
 });
 
-app.put("/updateData",(req,res)=> {
+/******  Uploading the profile image  ******/
+const imageStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/images');
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, `${Date.now()}${ext}`);
+  }
+});
+const uploadImage = multer({ storage: imageStorage });
+app.post("/updateImage",uploadImage.single('photo'),(req,res)=> {
+  const photo = req.file.filename;
+  console.log('photo :'+photo);
+  const imageUrl = `http://localhost:3100/images/${photo}`;
+  res.status(200).json({ success: true, message: 'Photo uploaded successfully', photo: imageUrl });
+});
+
+/********************** updateData **********************/
+app.put("/updateData",(req,res)=> { 
+  // app.put("/updateData",verifyToken,(req,res)=> { 
+  // Cette route nécessite une authentification
+  // Le middleware verifyToken s'exécute avant la fonction de routage
+  // Si le token est valide, il appelle next() pour poursuivre le traitement de la requête
+  // Sinon, il renvoie une erreur 403 (Token invalide)
+
   // const data = [req.body.firstName,res.body.lastName,res.body.email,res.body.password,res.body.photo,res.body.about,res.body.country,res.body.phone,res.body.birthdate,res.body.gender];
   const {password , ...data} = req.body ;
   console.log(data);
-  // const data =req.body;
   const userEmail = req.body.email;
   const userPwd = req.body.password;
 
@@ -157,6 +210,9 @@ db.query(sql, [userEmail], (err, userData) => {
   });
 });
 
+
+
+ 
 /* Pour cette vérification on peut faire avec post que avec get , c'est pourquoi on choisit le faire avec post :
  -  Plus sécurisée : car le mot de passe n'est pas envoyé en clair sur le réseau.
  -De plus, cette approche peut permettre une meilleure séparation des préoccupations, car vous pouvez laisser la logique d'authentification au niveau du serveur.

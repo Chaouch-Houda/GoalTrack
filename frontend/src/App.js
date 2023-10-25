@@ -19,7 +19,6 @@ import Signup from './Components/signup/Signup';
 import Favorites from './Components/favorites/Favorites';
 import { HistoryProvider } from './Components/history/HistoryContext';
 import { DownloadsProvider } from './Components/history/DownloadsContext';
-import { ProfileProvider } from './Components/profile/ProfileContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './pages/userDashboard/AuthContext';
 
@@ -32,7 +31,6 @@ function App() {
         <FavoritesProvider>
         <HistoryProvider>
         <DownloadsProvider>
-        <ProfileProvider>
         <AuthProvider>
                 <Routes>
                   <Route path='/' element={<LandingPage/>}>
@@ -53,7 +51,6 @@ function App() {
                   <Route path='*' element={<h1 style={{color:'white'}}>page not found</h1>}/>
                 </Routes>
         </AuthProvider>
-        </ProfileProvider>
         </DownloadsProvider>
         </HistoryProvider>
         </FavoritesProvider>

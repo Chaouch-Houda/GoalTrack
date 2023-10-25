@@ -51,7 +51,13 @@ const DashboardHeader = () => {
                 <CaretDown weight='regular' cursor='pointer' onClick={()=>setAvatarMenu(!avatarMenu)} ref={avatarBtnRef}/>
                 <span className='text-nowrap' style={{fontSize:'12px',fontWeight:'400',textTransform:'capitalize'}}>{user.firstName} {user.lastName}</span>
               </div>
-              <div><NavLink to='/connected/profile 'className='h-100 w-100'><div  className='avatar'></div></NavLink></div>
+              <div>
+                <NavLink to='/connected/profile 'className='h-100 w-100'>
+                  <div  className='avatar'>
+                    <img src={user.photo} alt="" />
+                  </div>
+                </NavLink>
+              </div>
               {avatarMenu && <div className="avatar-menu bg-white d-flex justify-content-center align-items-center position-absolute overflow-hidden" ref={avatarMenuRef}>
                 <ul className='p-0 m-0'>
                   <li><NavLink to='/signup' className='text-decoration-none' >Create new account</NavLink></li>

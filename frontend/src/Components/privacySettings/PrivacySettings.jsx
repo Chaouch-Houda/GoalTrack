@@ -8,6 +8,7 @@ import {Eye, EyeSlash} from 'phosphor-react';
 import './PrivacySettings.css';
 import '../profile/Profile.css'
 import '../notificationsSettings/NotificationsSettings.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 function PrivacySettings() {
   const privacyTab = [
@@ -126,10 +127,20 @@ function PrivacySettings() {
         <Button className='transparent-g-btn cancel-btn text-capitalize'>
           <Link to='/connected'>cancel</Link>
         </Button>
-        <Button type='submit' className='green-btn text-capitalize' onClick={() => { alert("Your information was updated") }}>
+        <Button type='submit' className='green-btn text-capitalize' 
+            onClick={() => { toast.success('Your changes have been successfully saved!', {
+            position: 'top-right',
+            autoClose: 3000, // La notification se fermera automatiquement après 3 secondes
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          }); 
+        }}>
           save
         </Button>
       </div>
+      <ToastContainer/>
     </div>
   );
 }

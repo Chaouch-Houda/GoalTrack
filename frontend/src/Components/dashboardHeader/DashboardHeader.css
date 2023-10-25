@@ -21,7 +21,6 @@
   }
 
 .avatar{
-  background-image: url(../../assets/images/user5.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,6 +28,12 @@
   height: 35px;
   border-radius: 50%;
   cursor:pointer; 
+  overflow: hidden;
+}
+.avatar>img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .avatar-menu{

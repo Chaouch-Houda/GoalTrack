@@ -8,8 +8,8 @@ import { MdOutlineCloudUpload } from 'react-icons/md';
 import {BsCloudUpload} from 'react-icons/bs'
 import { ToastContainer, toast } from 'react-toastify';
 
-import './UploadFile.css'
-const UploadFile = () => {
+import './UploadVideo.css'
+const UploadVideo = () => {
   // Utilisation de l'état local pour gérer les données du composant
   const [selectedFile, setSelectedFile] = useState(null);  // État pour stocker le fichier sélectionné
   const [uploadPercentage, setUploadPercentage] = useState(0);  // État pour la progression du téléchargement
@@ -76,7 +76,7 @@ const UploadFile = () => {
       // setVideoUrl(selectedFile);
       setSelectedFile(null);
 
-      axios.post('http://localhost:3001/upload', formData, {
+      axios.post('http://localhost:3001/uploadVideo', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -91,7 +91,14 @@ const UploadFile = () => {
       })
       .catch(error => {
         console.error(error);
-        alert('An error occurred while uploading the file. Please try again.');
+        toast.error('An error occurred while uploading the file. Please try again.', {
+          position: 'top-right',
+          autoClose: 3000, // La notification se fermera automatiquement après 3 secondes
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
       });
     }
   };
@@ -205,29 +212,5 @@ const UploadFile = () => {
   );
 };
 
-// Exporte le composant FileUpload pour être utilisé ailleurs
-export default UploadFile;
-
-
-// const [uploadedVideo, setUploadedVideo] = useState(null);
-
-
-// .then(response => {
-//     setUploadedVideo({
-//       name: selectedFile.name,
-//       url: `http://localhost:3001/uploads/${selectedFile.name}`
-//     });
-//     setUploadFinished(true);
-//   })
-
-{/* {uploadedVideo && (
-  <div>
-    <div className='d-flex justify-content-between' style={{backgroundColor:'blue',width:'300px',height:'50px'}}>
-      <div className='d-flex justify-content-center align-items-center gap-2'>
-        <LiaFileVideoSolid size={24} /> 
-        <span>{uploadedVideo.name}</span>
-      </div>
-      <IoMdClose size={20} onClick={() =>{ setUploadedVideo(null);setSelectedFile(null)}}/>  
-    </div>
-  </div>
-)} */}
+// Exporte le composant UploadVideo pour être utilisé ailleurs
+export default UploadVideo;

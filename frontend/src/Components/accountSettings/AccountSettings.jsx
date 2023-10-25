@@ -21,10 +21,7 @@ const AccountSettings = () => {
   // );
   const countryOptions = Object.keys(countries).map(countryCode => countries[countryCode].name);
 
-    // const handleGenderChange = (event) => {
-    //   setGender(event.target.value);
-    // };
-
+    
   const { control, handleSubmit, formState: { errors } } = useForm({ mode: "onChange"}); 
   // const {updateFormData} = useContext(ProfileContext);
   // const handleProfileSubmit = async (data) =>{
@@ -40,22 +37,8 @@ const AccountSettings = () => {
   // });
   // }
 
-  // const handleInputChange =() =>{
 
-  // }
-
-  // const handleProfileSubmit = async (data) =>{
-  //   console.log(data);
-  // }
-
-
-  // state variable to handle the About input's content
-  // const [aboutMsg, setAboutMsg] = useState('');
-
-  // const handleAboutMsg = (event) => {
-  //   setAboutMsg(event.target.value);
-  // };
-// dans la form , tous les inputs doivent avoir l'attribut name = status name ici.par exp, pour l'input first name doit avoir l'attribut name= 'firstName'.
+// dans la form , tous les inputs doivent avoir l'attribut name = meme name dans la base.par exp, pour l'input first name doit avoir l'attribut name= 'firstName'.
 //pour qu'il, dans submit function,peut attribuer les valeurs de l'input correctement depuis le paramètre data.
  
 // State variable to track password visibility
@@ -63,36 +46,89 @@ const [showPassword, setShowPassword] = useState(false);
 
 const {user,setUser}= useContext(AuthContext);
 
-  // //for the gender Select component
-  // const [gender, setGender] = useState(user.gender);
-  const [imageSrc, setImageSrc] = useState(null); 
+  const [imgUrl, setImgUrl] = useState(user.photo); // imgUrl pour stocker le chemin sous forme de Data URI faite par FileReader pour l'afficher dans le front puisque les chemins réels ne sont pas autorisés
+  const [imgSrc, setImgSrc] = useState(null); //imgSrc pour stocker le chemin réel (chemin sur la machine physique) de photo de profile (e.target.files[0]) 
+
+// const onSubmit = async (data) => {
+//   // const token = localStorage.getItem('token');
+//   console.log(data); 
+//   // updateFormData({ ...data, photo: imageSrc });// Mettre à jour les données du formulaire dans le contexte
+  
+//   try{
+//     const token = localStorage.getItem('token'); // Récupérer le token du localStorage
+//       console.log('token'+token)
+//     //  const response = await axios.put('http://localhost:3100/updateData', data, {
+//     //     headers: {
+//     //       authorization: `Bearer ${token}`, // Ajouter le token à l'en-tête
+//     //     },
+//     //   });
+//     const response = await axios.put('http://localhost:3100/updateData', data);
+//       if(response.status === 200) {
+//         localStorage.setItem('userData',JSON.stringify(data));
+//         const updatedData = JSON.parse( localStorage.getItem('userData'));
+//         setUser(updatedData);
+//         toast.success('Your changes have been successfully saved!', {
+//             position: 'top-right',
+//             autoClose: 3000, // La notification se fermera automatiquement après 3 secondes
+//             hideProgressBar: false,
+//             closeOnClick: true,
+//             pauseOnHover: true,
+//             draggable: true,
+//           });
+//           console.log('user'+ user)
+//       }
+//   }catch{
+
+//   }
+// };
 
 const onSubmit = async (data) => {
-  // const token = localStorage.getItem('token');
-  console.log(data); 
-  // updateFormData({ ...data, photo: imageSrc });// Mettre à jour les données du formulaire dans le contexte
-  
+  console.log('data:  '+ data); 
+  //FormData est un objet JavaScript qui permet de créer un ensemble de paires clé-valeur, similaire à ce que vous pourriez envoyer via un formulaire HTML.
+  //Il est particulièrement utile lors de l'envoi de données à un serveur via une requête HTTP, notamment lorsqu'il s'agit de télécharger des fichiers ou d'envoyer des données complexes.
+  const formData = new FormData();
+  formData.append('photo',imgSrc); // on va envoyer dans la req de updateImage le chemin réel de l'image (e.target.files[0]) 
+   // Afficher le contenu de formData
+    // for (const [key, value] of formData.entries()) {
+    //   console.log(`${key}: ${value}`);
+    // }
   try{
-     const response = await axios.put('http://localhost:3100/updateData', data);
-    
+    const res = await axios.post('http://localhost:3100/updateImage', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }})
+    console.log(res.data.message);
+    if(res.status === 200){  // si l'enregistrement de l'image dans le serveur est faite avec succés en peut poursuire updateData
+      data.photo = res.data.photo; // le chemin de photo de profile (qui va etre enregistré dans la BD) doit etre son chemin dans le dossier "uploads/images" pourqu'on peut le recupérer après de plus l'utilisation de son chemin réel (sur votre machine) n'est pas sécurié et les navigateurs ne l'autorise pas.
+      const response = await axios.put('http://localhost:3100/updateData', data);
       if(response.status === 200) {
         localStorage.setItem('userData',JSON.stringify(data));
-        const updatedData = JSON.parse( localStorage.getItem('userData'));
-        setUser(updatedData);
         toast.success('Your changes have been successfully saved!', {
-            position: 'top-right',
-            autoClose: 3000, // La notification se fermera automatiquement après 3 secondes
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-          });
-          console.log('user'+ user)
-      }
-  }catch{
+          position: 'top-right',
+          autoClose: 3000, // La notification se fermera automatiquement après 3 secondes
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        const updatedData = JSON.parse(localStorage.getItem('userData'));
+        setUser(updatedData);
+        console.log('updatedData: '+ updatedData)
+        console.log('user : '+user)
+        console.log('updatedData.photo: '+ user.photo)
+        // setImgUrl(updatedData.photo); //tant que l'utilisateur est connecté l'image doit etre affiché le chemin est récupiré depuis localStorage
 
+        }
+        else{
+          console.error("Error in updateData")
+        }
+    }
+  }catch (error) {
+    console.log('Error in updateData :', error.message);
   }
 };
+
+console.log('imgUrl '+imgUrl);
   return (
     <div className='accountSettings'>
       <div className='light'></div>
@@ -126,36 +162,44 @@ const onSubmit = async (data) => {
                     <div className='position-relative w-100 h-100 profile-img-input'>
                       <Form.Control
                         type="file"
+                        name='photo'
                         accept="image/png, image/jpeg, image/bmp"
                         // required='Photo field is required'
                         onChange={(e) => {
                           // Récupérer le fichier sélectionné par l'utilisateur
                           const file = e.target.files[0];
+                          setImgSrc(file)
+                          //file est simplement un objet de fichier brut, et non une URL que vous pouvez afficher dans votre interface utilisateur.
+                          // Le processus avec FileReader est nécessaire pour lire le contenu du fichier et le convertir en une URL utilisable.
                           // Créer une nouvelle instance de FileReader
                           const reader = new FileReader();
                           // Définir une fonction de rappel pour le chargement du fichier
                           reader.onload = (e) => {
                           // Récupérer l'URL de l'image sous forme de Data URI
                           const imageUrl = e.target.result;
-                          console.log('img link'+imageUrl)
-                            setImageSrc(imageUrl);
+                          // console.log('img link'+imageUrl)
+                          setImgUrl(imageUrl);
                           }
                           // Lire le contenu du fichier en tant que Data URI
                           reader.readAsDataURL(file);
                         }}
-                        className='w-100 h-100 opacity-0 position-absolute' style={{cursor:'pointer',backgroundColor:'red'}}
+                        // onChange={(e)=> 
+                        //   {
+                        //     const file =e.target.files[0];
+                        //      setSrc(file)}}
+                        className='w-100 h-100 opacity-0 position-absolute' style={{cursor:'pointer'}}
                       />
                       <div className='w-100 h-100'>
-                        {imageSrc!== null && <img src={imageSrc} alt='profile' style={{width:'100%',height:'100%',objectFit:'cover'}}/>}
+                        {imgUrl && <img src={imgUrl} alt='profile' style={{width:'100%',height:'100%',objectFit:'cover'}}/>}
                       </div>
                     </div>
                   </Form.Group>
                   <h5 style={{color:'var(--green)'}}>{user.firstName} {user.lastName}</h5>
-                  {errors.photo &&
+                  {/* {errors.photo &&
                     <Form.Text className="text-danger" style={{position:"absolute",bottom:"-10px",left:"0",textAlign:"start",width:"100%",fontSize:"min(12px,4vw)"}}>
                        {errors.photo.message}
                     </Form.Text>
-                  }
+                  } */}
                 </div>
               )}
             />
