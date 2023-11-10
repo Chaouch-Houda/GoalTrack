@@ -2,6 +2,7 @@ import React, {useState } from 'react';
 import './NotificationsSettings.css';
 import { Button, Form, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 const NotificationsSettings = () => {
   const notifTab=[
     {notif:'Video Processing Updates',explanation:'Receive notifications about the status of your uploaded video processing.'},
@@ -65,8 +66,17 @@ const NotificationsSettings = () => {
         </Table>
         <div className='d-flex justify-content-end gap-3 mt-5' style={{maxWidth:'53rem'}}>
         <Button className='transparent-g-btn cancel-btn text-capitalize'><Link to="/connected">cancel</Link></Button>
-        <Button type="submit" className='green-btn text-capitalize' onClick={()=>{alert("Your informations was updated")}}>save</Button>
+        <Button type="submit" className='green-btn text-capitalize' 
+          onClick={()=>{toast.success('Your changes have been successfully saved!', {
+                          position: 'top-right',
+                          autoClose: 3000, // La notification se fermera automatiquement après 3 secondes
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                        });}}>save</Button>
       </div>
+      <ToastContainer/>
     </div>
     );
   };

@@ -1,4 +1,4 @@
-import React,{ useState, useEffect, useContext } from 'react';
+import React,{ useState, useEffect } from 'react';
 import "./Testimonials.css";
 import {testimonialsData} from "../../componentsData/testimonialsData.js";
 import{Row,Col} from "react-bootstrap"

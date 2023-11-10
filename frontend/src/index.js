@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-select/5.7.4/react-select.min.css" />
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

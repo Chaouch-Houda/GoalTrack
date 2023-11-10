@@ -1,13 +1,14 @@
 import React, { createContext, useState } from 'react';
+import {matchData} from '../../componentsData/matchData'
 
 const FavoritesContext = createContext();
 
 const FavoritesProvider = ({ children }) => {
-    const [favorites,setFavorites] = useState([])
-    const handleFavorites = (index) =>{
-        if (favorites.includes(index))
-        setFavorites(favorites.filter((fav)=> fav !== index ));
-        else setFavorites([...favorites,index])
+    const [favorites,setFavorites] = useState([matchData[1].id,matchData[3].id])
+    const handleFavorites = (id) =>{
+        if (favorites.includes(id))
+        setFavorites(favorites.filter((fav)=> fav !== id ));
+        else setFavorites([...favorites,id])
     } 
 
   return (

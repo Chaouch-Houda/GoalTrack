@@ -17,7 +17,7 @@
     overflow-y: scroll; */
     /* max-width: 90%; */
 }
-@media (width<=576px){
+@media (width<576px){
     .userDashboard{
         flex-direction: column;
     }
@@ -29,7 +29,7 @@
         margin-top: 72px;
     }
 }
-@media (width>576px){
+@media (width>=576px){
     .mClosed{
         width: calc(100% - 5rem) !important;
         margin-left: 5rem;
