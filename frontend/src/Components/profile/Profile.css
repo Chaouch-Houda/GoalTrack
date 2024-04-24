@@ -2,19 +2,18 @@
     background-color: #27374B;
     width: 90%;
     max-width: 700px;
+    min-height: 90dvh;
     border-radius: 2px;
     font-family: var(--ff-one);
     text-transform: capitalize;
 }
 .img-pro{
-    /* background: url(../../assets/images/user5.jpg) no-repeat;
-    background-position: center;
-    background-size: cover; */
+    background: url(../../assets/images/user.jpg) no-repeat center;
+    background-size: cover;
     height: 9rem;
     width: 9rem;
     border-radius: 50%;
     margin: 1rem;
-    background-color: blue;
     overflow: hidden;
 }
 .img-pro>img{

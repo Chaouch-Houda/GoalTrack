@@ -11,10 +11,8 @@ import Lives from '../lives/Lives'
 import Footer from '../footer/Footer'
 import FAQ from '../faq/FAQ'
 import Contact from '../contact/Contact'
-import DropzoneComponent from '../Drop&Down';
 import DashboardHeader from '../dashboardHeader/DashboardHeader';
 import NewsSlider from '../newsSlider/NewsSlider';
-import { AuthContext } from '../../pages/userDashboard/AuthContext';
 const Dashboard = () => {
 
   const handleInputChange = () =>{
@@ -45,7 +43,7 @@ const Dashboard = () => {
             <div className='w-100 d-flex flex-column flex-md-row justify-content-around pt-3 pt-sm-4 pt-lg-5 px-3 overflow-hidden'>
               <div className='d-flex flex-column justify-content-center align-items-center gap-5 ' style={{flexGrow:1}}>
                 <UploadVideo/>
-                <DropzoneComponent />
+                {/* <DropzoneComponent /> */}
               </div> 
             </div>
           </div>

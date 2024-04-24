@@ -16,10 +16,10 @@ const db = mysql.createConnection({
  une connexion à la base de données est déjà établie. Si aucune connexion n'est disponible, elle en crée une
  de manière transparente pour exécuter la requête, puis la ferme une fois la requête terminée.*/
 // Connexion à la base de données MySQL
-// db.connect((err) => {
-//     if (err) {
-//       console.error('Error connecting to database');
-//     }
-//     console.log("Connected to MySQL database!");
-//   });
+db.connect((err) => {
+    if (err) {
+      console.error('Error connecting to database');
+    }
+    console.log("Connected to MySQL database!");
+  });
 export default db;

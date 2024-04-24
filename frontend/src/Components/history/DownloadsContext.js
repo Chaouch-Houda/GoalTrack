@@ -4,11 +4,12 @@ import {matchData} from '../../componentsData/matchData'
 const DownloadsContext = createContext();
 
 const DownloadsProvider = ({ children }) => {
-    const [downloads,setDownloads] = useState([`downloaded-${matchData[1].id}`,`downloaded-${matchData[3].id}`])
+    const [downloads,setDownloads] = useState([matchData[1],matchData[3]])
     const handleDownloads = (id) =>{
-        if (downloads.includes(id))
-        setDownloads(downloads.filter((fav)=> fav !== id ));
-        else setDownloads([...downloads,id])
+      const selectedVideo = downloads.find(match => match.id === id )
+        if (selectedVideo)
+        setDownloads(downloads.filter((match) => match.id !== id ));
+        // else setDownloads([...downloads,matchData.find(m => m.id === id)])
     } 
 
   return (

@@ -27,7 +27,7 @@
     align-items: center;
     height: 100%;
     flex-direction: column; */
-    background-color: var(--bg-color);
+    background-color: var(--bg-color) ;
     overflow: hidden;
 }
 

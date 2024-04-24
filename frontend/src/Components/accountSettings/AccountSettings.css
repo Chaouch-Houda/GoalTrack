@@ -48,7 +48,8 @@
     border-radius: 50% !important;
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color:gray;
+    background: url(../../assets/images/user.jpg) no-repeat center;
+    background-size: cover;
 }
 
 .profile-img-label{

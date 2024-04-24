@@ -4,11 +4,13 @@ import {matchData} from '../../componentsData/matchData'
 const FavoritesContext = createContext();
 
 const FavoritesProvider = ({ children }) => {
-    const [favorites,setFavorites] = useState([matchData[1].id,matchData[3].id])
-    const handleFavorites = (id) =>{
-        if (favorites.includes(id))
-        setFavorites(favorites.filter((fav)=> fav !== id ));
-        else setFavorites([...favorites,id])
+    const [favorites,setFavorites] = useState([matchData[1],matchData[3]])
+    const handleFavorites = (match) =>{
+      const selectedVideo = favorites.find(fav => fav.id === match.id)
+      console.log(selectedVideo)
+        if (selectedVideo)
+        setFavorites(favorites.filter((fav) => fav.id !== match.id ));
+        else setFavorites([...favorites,match])
     } 
 
   return (

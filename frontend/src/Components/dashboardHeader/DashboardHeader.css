@@ -10,6 +10,7 @@
   
   .search-video input{
     padding-left: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
   }
   
   @media (width<576px){
@@ -21,8 +22,7 @@
   }
 
 .avatar{
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url(../../assets/images/user.jpg) no-repeat center;
   background-size: cover;
   width: 35px;
   height: 35px;

@@ -155,8 +155,8 @@ console.log('imgUrl '+imgUrl);
                  <Form.Group {...field} controlId="photo" className='upload-profile-img position-relative d-flex flex-column m-md-2'>
                     <Form.Label className='profile-img-label position-absolute w-100 d-flex justify-content-center align-items-center '>
                       <div className='d-flex flex-column align-items-center gap-1'>
-                        <Image size={24} color="#ffffff" weight="light" />
-                        <span>Change photo</span>
+                        <Image size={24} color="gray" weight="light" />
+                        <span style={{color:'gray'}}>Change photo</span>
                       </div>
                     </Form.Label>
                     <div className='position-relative w-100 h-100 profile-img-input'>

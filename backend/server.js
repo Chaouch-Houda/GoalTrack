@@ -12,15 +12,15 @@ import multer from 'multer'
 
 const salt = await bcrypt.genSalt(10); //hashing the password with 10 lettres
 const app = express();
-const port = 3100;
+const port = process.env.PORT;
 
 
-const corsOptions = {
-  origin: 'http://localhost:3000', // L'origine du client React
-  credentials: true, // Autoriser les en-têtes d'autorisation
-};
+// const corsOptions = {
+//   origin: 'http://localhost:3000', // L'origine du client React
+//   credentials: true, // Autoriser les en-têtes d'autorisation
+// };
 app.use(cors());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.json()); //app.use est un middlewere de json permet de : si on fait post/put ou any request dans le body, il permet de mettre ce body content dans req.body
 app.use('/images', express.static('uploads/images')); // to make the photos from server accessibles   
 
@@ -29,13 +29,10 @@ app.use('/images', express.static('uploads/images')); // to make the photos from
     secret: process.env.SECRET_KEY,
     algorithms: ['HS256']
 
-  }).unless({ path: ['/signup','/login','/checkEmail','/updateImage','/updateData','uploads/images'] }); //Exclusion des routes non authentifiées
+  }).unless({ path: ['/signup','/login','/checkEmail','/updateImage','/uploadVideo','/updateData','uploads/images'] }); //Exclusion des routes non authentifiées
   // Application de votre middleware express-jwt
   app.use(jwtMiddleware);
   
-app.listen(port, () => {
-  console.log("The server is listening on port : " + process.env.PORT);
-});
 
 // app.use(cors({
 //   origin:["http://localhost:3100"],
@@ -217,6 +214,10 @@ db.query(sql, [userEmail], (err, userData) => {
  -  Plus sécurisée : car le mot de passe n'est pas envoyé en clair sur le réseau.
  -De plus, cette approche peut permettre une meilleure séparation des préoccupations, car vous pouvez laisser la logique d'authentification au niveau du serveur.
 */
+
+app.listen(port, () => {
+  console.log("The server is listening on port : " + port);
+});
 
 // Handling Errors
 app.use((err, req, res, next) => {

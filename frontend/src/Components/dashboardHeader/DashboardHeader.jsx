@@ -54,7 +54,7 @@ const DashboardHeader = () => {
               <div>
                 <NavLink to='/connected/profile 'className='h-100 w-100'>
                   <div  className='avatar'>
-                    <img src={user.photo} alt="" />
+                   {user.photo && <img src={user.photo} alt=" " />}
                   </div>
                 </NavLink>
               </div>

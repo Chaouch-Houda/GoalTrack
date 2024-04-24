@@ -8,7 +8,8 @@ import './MatchSlider.css'
 import Slider from 'react-slick'
 import {ArrowRight} from 'phosphor-react';
 import { FavoritesContext } from '../favorites/FavoritesContext'
-import { renderStats } from '../history/History'
+import { renderStats } from '../videosList/VideosList'
+
 
 const MatchSlider = () => {
     const {favorites,handleFavorites} = useContext(FavoritesContext);
@@ -103,7 +104,7 @@ const MatchSlider = () => {
                         </Button>
                   </div>
                   <div className='d-flex justify-content-end gap-1 mt-1'>
-                  {favorites.includes(match.id) ? <Heart size={22} color="#ec0909" cursor='pointer' weight="fill" onClick={()=>handleFavorites(match.id)}/> : <Heart size={22} color="#f7f7f7" cursor='pointer' onClick={()=>handleFavorites(match.id)}/>}
+                  {favorites.includes(match) ? <Heart size={20} color="#ec0909" cursor='pointer' weight="fill" onClick={()=>handleFavorites(match)}/> : <Heart size={20} color="#f7f7f7" cursor='pointer' onClick={()=>handleFavorites(match)}/>}
                   <DownloadSimple size={22} color="#f7f7f7" cursor='pointer'/>
                   <Link size={22} color="#f7f7f7" cursor='pointer'/>
                   </div>

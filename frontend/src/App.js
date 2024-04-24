@@ -5,7 +5,7 @@ import React from 'react';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import UserDashboard from './pages/userDashboard/UserDashboard';
 import LandingPage from './pages/LandingPage';
-import History from './Components/history/History';
+import History, { Downloads, Histories } from './Components/history/History';
 import Dashboard from './Components/dashboard/Dashboard';
 import AccountSettings from './Components/accountSettings/AccountSettings';
 import PrivacySettings from './Components/privacySettings/PrivacySettings';
@@ -21,6 +21,7 @@ import { HistoryProvider } from './Components/history/HistoryContext';
 import { DownloadsProvider } from './Components/history/DownloadsContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './pages/userDashboard/AuthContext';
+import ErrorPage from './Components/errorPage/ErrorPage';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <SidebarProvider>
-        <FavoritesProvider>
+         <FavoritesProvider>{/*FavoritesProvider est au dessus de HistoryProvider et DownloadsProvider puisqu'on a besoin de tableau favorites pour history et downloads  */}
         <HistoryProvider>
         <DownloadsProvider>
         <AuthProvider>
@@ -42,13 +43,16 @@ function App() {
                     <Route path='dashboard' element={<Dashboard/>}/>
                     <Route path='profile' element={<Profile/>}/>
                     <Route path='history'element={<History/>}/>
+                      {/* <Route path="histories" element={<Histories/>}/>
+                      <Route path="downloads" element={<Downloads/>}/>
+                    </Route> */}
                     <Route path='favorites'element={<Favorites/>}/>
                     <Route path='allNotifications'element={<AllNotifications/>}/>
                     <Route path='accountSettings'element={<AccountSettings/>}/>
                     <Route path='privacySettings' element={<PrivacySettings/>}/>
                     <Route path='notificationsSettings' element={<NotificationsSettings/>}/>
                   </Route>
-                  <Route path='*' element={<h1 style={{color:'white'}}>page not found</h1>}/>
+                  <Route path='*' element={<ErrorPage/>}/>
                 </Routes>
         </AuthProvider>
         </DownloadsProvider>

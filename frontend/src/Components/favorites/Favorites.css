@@ -1,6 +1,7 @@
 .all-favorites{
     width: 95%;
     max-width: 1200px;
+    min-height: 100dvh;
     /* position: absolute;top: 0; plus responsive avec main-content pos relative et overflow-y:scroll */
     background-color: #27374B;
     border-radius: 2px;

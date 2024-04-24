@@ -76,7 +76,7 @@ const UploadVideo = () => {
       // setVideoUrl(selectedFile);
       setSelectedFile(null);
 
-      axios.post('http://localhost:3001/uploadVideo', formData, {
+      axios.post('http://localhost:3100/uploadVideo', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
