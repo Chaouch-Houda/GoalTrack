@@ -5,7 +5,7 @@ import logo from '../../assets/images/logo.png'
 
 const Lives = () => {
   return (
-    <div className='lives p-3 d-flex flex-column align-items-center justify-content-center'>
+    <div className='lives w-100 p-3 d-flex flex-column align-items-center justify-content-center'>
       <div className='w-100 pb-2'>
       <h6 style={{color:'var(--green)',textShadow:'0 0 1px black'}}>Lives on GoalTrack</h6>
       </div>

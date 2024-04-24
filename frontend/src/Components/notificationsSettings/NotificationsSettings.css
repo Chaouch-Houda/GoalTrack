@@ -48,7 +48,7 @@
     color: var(--green) !important;
 }
 
-@media (width<=576px) {
+@media (width<576px) {
     .notificationsSettings{
         padding: 2rem 1rem 5rem 1rem;
     }
